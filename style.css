@@ -1,0 +1,107 @@
+/* 1. Global Reset & Typography */
+body { 
+    font-family: 'Inter', sans-serif; 
+    scroll-behavior: smooth; 
+    background-color: #f8fafc; 
+    color: #334155; 
+}
+
+/* 2. Navbar Elegant & Active States */
+.navbar { 
+    backdrop-filter: blur(10px); 
+    background-color: rgba(255, 255, 255, 0.9) !important; 
+    border-bottom: 1px solid #e2e8f0; 
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #334155 !important;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out !important;
+    padding: 8px 16px !important;
+    border-radius: 6px;
+}
+
+/* Hover Effect */
+.navbar .navbar-nav .nav-link:hover {
+    color: #0284c7 !important;
+    background-color: #e0f2fe !important;
+}
+
+/* Active Effect */
+.navbar .navbar-nav .nav-link.active {
+    color: #ffffff !important;
+    background-color: #0284c7 !important;
+    font-weight: 600;
+}
+
+/* 3. Hero Section */
+.hero { 
+    padding: 150px 0; 
+    background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%); 
+}
+.profile-img { 
+    width: 180px; height: 180px; 
+    border-radius: 50%; 
+    border: 4px solid #38bdf8; 
+    object-fit: cover; 
+    margin-bottom: 20px; 
+}
+
+/* 4. Elegant Cards */
+.card { 
+    background: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+    transition: all 0.3s ease; 
+}
+.card:hover { 
+    transform: translateY(-8px); 
+    border-color: #38bdf8;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* 5. Section Adjustments */
+section { padding: 80px 0; }
+h2 { color: #0f172a; margin-bottom: 30px; font-weight: 700; }
+.bg-light-soft { background-color: #f1f5f9; }
+
+.skill-box{
+    background:#313949;
+    border-radius:20px;
+    height:180px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    transition:.3s;
+    cursor:pointer;
+}
+
+.skill-box img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    margin-bottom:18px;
+}
+
+.skill-box h6{
+    color:#fff;
+    font-size:18px;
+    font-weight:600;
+    text-align:center;
+    margin:0;
+    line-height:1.4;
+}
+
+.skill-box:hover{
+    transform:translateY(-8px);
+    background:#3b4356;
+    box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
