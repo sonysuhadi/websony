@@ -1,530 +1,117 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sony Kurniawan Suhadi | Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background: #f8fafc; color: #334155; }
-        
-        /* Navbar Elegant */
-        .navbar { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid #e2e8f0; }
-        .nav-link { color: #334155 !important; font-weight: 500; }
-
-        /* Hero */
-        .hero { padding: 150px 0; background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%); }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid #38bdf8; object-fit: cover; margin-bottom: 20px; }
-        
-        /* Cards */
-        .card { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); border-color: #38bdf8; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        
-        /* Sections */
-        section { padding: 80px 0; }
-        h2 { color: #0f172a; margin-bottom: 30px; font-weight: 700; }
-        
-        /* Light Section Background */
-        .bg-soft { background: #f1f5f9; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sony Kurniawan Suhadi | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background: #f8fafc; color: #334155; }
+        .navbar { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid #e2e8f0; }
+        .nav-link { color: #334155 !important; font-weight: 500; }
+        .hero { padding: 150px 0; background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%); }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid #38bdf8; object-fit: cover; margin-bottom: 20px; }
+        .card { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); border-color: #38bdf8; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        section { padding: 80px 0; }
+        h2 { color: #0f172a; margin-bottom: 30px; font-weight: 700; }
+        .bg-soft { background: #f1f5f9; }
+        .skill-box { padding: 15px; text-align: center; }
+        .skill-box img { width: 40px; height: 40px; margin-bottom: 10px; }
+        @media (max-width: 768px) { .hero { padding: 100px 0; } }
+    </style>
 </head>
-
 <body>
 
 <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">SONY KURNIAWAN SUHADI</a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menu">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#home">Beranda</a>
-                </li>
-            
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">Tentang</a>
-                </li>
-            
-                <li class="nav-item">
-                    <a class="nav-link" href="#project">Proyek</a>
-                </li>
-            
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Kontak</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">SONY KURNIAWAN SUHADI</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+                <li class="nav-item"><a class="nav-link" href="#project">Proyek</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
 <section id="home" class="hero text-center">
-    <div class="container">
-        <img src="Sony.png" alt="Profile" class="profile-img">
-        <h1 class="display-4 fw-bold">Sony Kurniawan Suhadi</h1>
-        <p class="lead">IoT Engineer • AI Developer • Web Developer</p>
-        <a href="#project" class="btn btn-outline-info btn-lg mt-3">Lihat Portfolio</a>
-    </div>
+    <div class="container">
+        <img src="Sony.png" alt="Profile" class="profile-img">
+        <h1 class="display-4 fw-bold">Sony Kurniawan Suhadi</h1>
+        <p class="lead">IoT Engineer • AI Developer • Web Developer</p>
+        <a href="#project" class="btn btn-outline-info btn-lg mt-3">Lihat Portfolio</a>
+    </div>
 </section>
 
 <section id="about" class="container">
-    <h2 class="text-center">About</h2>
-    <p class="text-center w-75 mx-auto">Mahasiswa Teknik Komputer Universitas Gunadarma yang berfokus pada <strong>Network Engineering</strong>. 
-        Memiliki keahlian dalam arsitektur jaringan, protokol routing, dan optimasi sistem. 
-        Berdedikasi untuk membangun infrastruktur IT yang aman dan skalabel dengan kemampuan pemecahan masalah yang kompleks dalam lingkungan kolaboratif.</p>
+    <h2 class="text-center">About</h2>
+    <p class="text-center w-75 mx-auto">Mahasiswa Teknik Komputer Universitas Gunadarma yang berfokus pada <strong>Network Engineering</strong>. 
+        Memiliki keahlian dalam arsitektur jaringan, protokol routing, dan optimasi sistem. 
+        Berdedikasi untuk membangun infrastruktur IT yang aman dan skalabel dengan kemampuan pemecahan masalah yang kompleks dalam lingkungan kolaboratif.</p>
 </section>
 
 <section id="focus" class="bg-soft">
-    <div class="container">
-        <h2 class="text-center mb-5">Professional Focus</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card p-4 h-100 border-0 shadow-sm">
-                    <i class="fas fa-network-wired fa-2x text-info mb-3"></i>
-                    <h4 class="mb-3">Network Engineering</h4>
-                    <p class="text-muted">Fokus pada desain arsitektur jaringan yang tangguh, implementasi protokol routing (OSPF, BGP, EIGRP), serta optimasi infrastruktur switching untuk memastikan konektivitas dengan latensi rendah dan keamanan tinggi.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-4 h-100 border-0 shadow-sm">
-                    <i class="fas fa-microchip fa-2x text-info mb-3"></i>
-                    <h4 class="mb-3">Advanced IoT & Systems</h4>
-                    <p class="text-muted">Mengintegrasikan perangkat keras (ESP32) dengan ekosistem cloud (Firebase) dan aplikasi mobile (Flutter). Berpengalaman dalam pengembangan sistem cerdas berbasis sistem operasi Linux (Ubuntu) dan pengembangan mobile.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-4 h-100 border-0 shadow-sm">
-                    <i class="fas fa-users-cog fa-2x text-info mb-3"></i>
-                    <h4 class="mb-3">Strategic Collaboration</h4>
-                    <p class="text-muted">Memanfaatkan kemampuan leadership dan komunikasi strategis untuk manajemen tim, resolusi konflik, dan koordinasi departemen guna mencapai target operasional dan meningkatkan efisiensi organisasi secara signifikan.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="container">
+        <h2 class="text-center mb-5">Professional Focus</h2>
+        <div class="row g-4">
+            <div class="col-md-4"><div class="card p-4 h-100 border-0 shadow-sm"><i class="fas fa-network-wired fa-2x text-info mb-3"></i><h4>Network Engineering</h4><p class="text-muted">Fokus pada desain arsitektur jaringan yang tangguh, implementasi protokol routing, serta optimasi infrastruktur.</p></div></div>
+            <div class="col-md-4"><div class="card p-4 h-100 border-0 shadow-sm"><i class="fas fa-microchip fa-2x text-info mb-3"></i><h4>Advanced IoT & Systems</h4><p class="text-muted">Mengintegrasikan perangkat keras (ESP32) dengan ekosistem cloud (Firebase) dan aplikasi mobile (Flutter).</p></div></div>
+            <div class="col-md-4"><div class="card p-4 h-100 border-0 shadow-sm"><i class="fas fa-users-cog fa-2x text-info mb-3"></i><h4>Strategic Collaboration</h4><p class="text-muted">Memanfaatkan kemampuan leadership dan komunikasi strategis untuk manajemen tim dan efisiensi organisasi.</p></div></div>
+        </div>
+    </div>
 </section>
 
 <section id="education" class="container">
-    <h2 class="text-center mb-5">Education</h2>
-    <div class="row g-4 justify-content-center">
-        <div class="col-md-5">
-            <div class="card p-4 h-100 border-0">
-                <div class="d-flex align-items-center mb-3">
-                    <i class="fas fa-school fa-2x text-info me-3"></i>
-                    <h4 class="mb-0">SMA Negeri 1 TAJURHALANG</h4>
-                </div>
-                <p class="text-muted mb-1">Jurusan IPA</p>
-                <small class="text-info">2020 - 2023</small>
-                <p class="mt-3">Nilai Akhir 92.00</p>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="card p-4 h-100 border-0">
-                <div class="d-flex align-items-center mb-3">
-                    <i class="fas fa-university fa-2x text-info me-3"></i>
-                    <h4 class="mb-0">Universitas Gunadarma</h4>
-                </div>
-                <p class="text-muted mb-1">Teknik Komputer</p>
-                <small class="text-info">2023 - Sekarang</small>
-                <p class="mt-3">Fokus studi: AI, IoT, System Embedded, Networking</p>
-            </div>
-        </div>
-    </div>
+    <h2 class="text-center mb-5">Education</h2>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-5"><div class="card p-4 h-100 border-0"><div class="d-flex align-items-center mb-3"><i class="fas fa-school fa-2x text-info me-3"></i><h4 class="mb-0">SMA Negeri 1 TAJURHALANG</h4></div><p class="text-muted mb-1">Jurusan IPA</p><small class="text-info">2020 - 2023</small><p class="mt-3">Nilai Akhir 92.00</p></div></div>
+        <div class="col-md-5"><div class="card p-4 h-100 border-0"><div class="d-flex align-items-center mb-3"><i class="fas fa-university fa-2x text-info me-3"></i><h4 class="mb-0">Universitas Gunadarma</h4></div><p class="text-muted mb-1">Teknik Komputer</p><small class="text-info">2023 - Sekarang</small><p class="mt-3">Fokus studi: AI, IoT, System Embedded, Networking</p></div></div>
+    </div>
 </section>
 
 <section id="experience" class="bg-soft">
-    <div class="container">
-        <h2 class="text-center mb-5">Experience</h2>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card p-4 h-100">
-                    <h5>Asisten Laboratorium Sistem Komputer Lanjut</h5>
-                    <p class="text-muted">2026 - Present</p>
-                    <ul class="small">
-                        <li>Mengajar & membimbing praktikum: Mobile Computing (Flutter & Golang), Basic Networking (Cisco), & Advanced Networking (Linux).</li>
-                        <li>Mentoring proyek IoT (ESP32, Firebase, Flutter).</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card p-4 h-100">
-                    <h5>Head of Human Resource Development & Creative Media</h5>
-                    <p class="text-muted">Himatekkom - Universitas Gunadarma | 2023 - Present</p>
-                    <ul class="small">
-                        <li>Head of HRD: Menjaga engagement anggota >85% & manajemen konflik internal.</li>
-                        <li>Creative Media: Meningkatkan partisipasi event sebesar 40% melalui aset visual yang strategis.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="skill" class="container">
-    <h2 class="text-center">Skills</h2>
-    <div class="row g-4 text-center">
-        <div class="col-md-4">
-            <div class="card p-3"><h5>Network & System</h5>
-            <p class="small">Network Design, Routing & Switching, OS (Linux/Windows), Hardware, </p></div>
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3"><h5>Programming & IoT</h5>
-            <p class="small">Python, Golang, Flutter, ESP32, Firebase, PostgreSQL, PVE Server</p></div>
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3"><h5>Soft Skills</h5>
-            <p class="small">Leadership, Strategic Communication, Team Management</p></div>
-        </div>
-    </div>
-</section>
-
-<section id="software" class="bg-soft">
-    <div class="container">
-        <h2 class="text-center mb-5">Software Proficiency</h2>
-        <div class="row g-4 justify-content-center">
-            
-            <div class="col-md-3">
-                <div class="card p-4 text-center h-100">
-                    <i class="fas fa-network-wired fa-2x text-info mb-3"></i>
-                    <h5>Networking</h5>
-                    <p class="text-muted small">Cisco Packet Tracer, GNS3, Wireshark</p>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card p-4 text-center h-100">
-                    <i class="fas fa-code fa-2x text-info mb-3"></i>
-                    <h5>Development</h5>
-                    <p class="text-muted small">VS Code, PyCharm, Docker, GitHub</p>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card p-4 text-center h-100">
-                    <i class="fas fa-palette fa-2x text-info mb-3"></i>
-                    <h5>Creative & Docs</h5>
-                    <p class="text-muted small">Figma, Adobe Creative Suite, MS Office</p>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card p-4 text-center h-100">
-                    <i class="fas fa-server fa-2x text-info mb-3"></i>
-                    <h5>OS & Server</h5>
-                    <p class="text-muted small">Ubuntu (Linux), Windows Server, Firebase</p>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
-
-<section class="py-5">
-    <div class="container">
-        <div class="row g-4">
-
-            <!-- Linux -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
-                    <h6>Linux Ubuntu</h6>
-                </div>
-            </div>
-
-            <!-- Docker -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
-                    <h6>Docker</h6>
-                </div>
-            </div>
-
-            <!-- Cisco -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/cisco/1BA0D7" alt="Cisco">
-                    <h6>Cisco</h6>
-                </div>
-            </div>
-
-            <!-- MikroTik -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/mikrotik" alt="MikroTik">
-                    <h6>MikroTik</h6>
-                </div>
-            </div>
-
-            <!-- Proxmox -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/proxmox/F15A24" alt="Proxmox">
-                    <h6>Proxmox VE</h6>
-                </div>
-            </div>
-
-            <!-- VirtualBox -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/virtualbox/183A61" alt="VirtualBox">
-                    <h6>VirtualBox</h6>
-                </div>
-            </div>
-
-            <!-- WireGuard -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/wireguard/88171A" alt="WireGuard">
-                    <h6>WireGuard</h6>
-                </div>
-            </div>
-
-            <!-- Cloudflare -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="Cloudflare">
-                    <h6>Cloudflare</h6>
-                </div>
-            </div>
-
-            <!-- Python -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-                    <h6>Python</h6>
-                </div>
-            </div>
-
-            <!-- PHP -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
-                    <h6>PHP</h6>
-                </div>
-            </div>
-
-            <!-- Flutter -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">
-                    <h6>Flutter</h6>
-                </div>
-            </div>
-
-            <!-- HTML -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
-                    <h6>HTML5</h6>
-                </div>
-            </div>
-
-            <!-- CSS -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
-                    <h6>CSS3</h6>
-                </div>
-            </div>
-
-            <!-- JavaScript -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
-                    <h6>JavaScript</h6>
-                </div>
-            </div>
-
-            <!-- MySQL -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
-                    <h6>MySQL</h6>
-                </div>
-            </div>
-
-            <!-- PostgreSQL -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
-                    <h6>PostgreSQL</h6>
-                </div>
-            </div>
-
-            <!-- pgAdmin -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/postgresql/336791" alt="pgAdmin">
-                    <h6>pgAdmin 4</h6>
-                </div>
-            </div>
-
-            <!-- VS Code -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
-                    <h6>VS Code</h6>
-                </div>
-            </div>
-
-            <!-- Android Studio -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/androidstudio/3DDC84" alt="Android Studio">
-                    <h6>Android Studio</h6>
-                </div>
-            </div>
-
-            <!-- Arduino IDE -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/arduino/00979D" alt="Arduino IDE">
-                    <h6>Arduino IDE</h6>
-                </div>
-            </div>
-
-            <!-- Postman -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/postman/FF6C37" alt="Postman">
-                    <h6>Postman</h6>
-                </div>
-            </div>
-
-            <!-- Git -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
-                    <h6>Git</h6>
-                </div>
-            </div>
-
-            <!-- GitHub -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub">
-                    <h6>GitHub</h6>
-                </div>
-            </div>
-
-            <!-- Raspberry Pi -->
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="skill-box">
-                    <img src="https://cdn.simpleicons.org/raspberrypi/C51A4A" alt="Raspberry Pi">
-                    <h6>Raspberry Pi</h6>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section id="certificates" class="container">
-    <h2 class="text-center mb-5">Certificates</h2>
-    <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-            <div class="card p-4 text-center h-100">
-                <i class="fas fa-certificate fa-3x text-info mb-3"></i>
-                <h5>Sertifikat Saya</h5>
-                <a href="https://drive.google.com/drive/folders/150zKmpYTuLgTUBChRQZMbPUtasrQl-bC?usp=sharing" target="_blank" class="btn btn-outline-info btn-sm mt-auto">Lihat Sertifikat</a>
-            </div>
-        </div>
-    </div>
+    <div class="container">
+        <h2 class="text-center mb-5">Experience</h2>
+        <div class="row g-4">
+            <div class="col-md-6"><div class="card p-4 h-100"><h5>Asisten Laboratorium Sistem Komputer Lanjut</h5><p class="text-muted">2026 - Present</p><ul><li>Mobile Computing (Flutter & Golang), Basic Networking (Cisco), & Advanced Networking (Linux).</li><li>Mentoring proyek IoT (ESP32, Firebase, Flutter).</li></ul></div></div>
+            <div class="col-md-6"><div class="card p-4 h-100"><h5>Head of Human Resource Development & Creative Media</h5><p class="text-muted">Himatekkom - Universitas Gunadarma | 2023 - Present</p><ul><li>Head of HRD: Menjaga engagement anggota >85%.</li><li>Creative Media: Meningkatkan partisipasi event sebesar 40%.</li></ul></div></div>
+        </div>
+    </div>
 </section>
 
 <section id="project" class="container">
-    <h2 class="text-center mb-5">Projects</h2>
-    <div class="row g-4">
-        
-        <div class="col-md-4">
-            <div class="card h-100 overflow-hidden">
-                <img src="https://birdgoo.com/cdn/shop/files/a-goups-of-birds-flying-ai-detection-with-green-bords-target-these-birds.png?height=1664&v=1762768154" class="card-img-top" alt="Bird Detection">
-                <div class="card-body">
-                    <h4>Bird Detection AI</h4>
-                    <p class="text-muted">YOLOv8 + Raspberry Pi + Flask</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card h-100 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" class="card-img-top" alt="Wedding Invitation">
-                <div class="card-body">
-                    <h4>Wedding Invitation</h4>
-                    <p class="text-muted">Responsive Web Design</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-    <div class="card h-100 overflow-hidden">
-        <img src="https://i.ytimg.com/vi/_WTCNnULEFg/maxresdefault.jpg" class="card-img-top" alt="Robot Triathlon">
-        <div class="card-body">
-            <h4>Robot Triathlon</h4>
-            <p class="text-muted">Wall follower, Line follower & Bluetooth mode</p>
-        </div>
-    </div>
-</div>
-
-    </div>
+    <h2 class="text-center mb-5">Projects</h2>
+    <div class="row g-4">
+        <div class="col-md-4"><div class="card h-100 overflow-hidden"><img src="https://birdgoo.com/cdn/shop/files/a-goups-of-birds-flying-ai-detection-with-green-bords-target-these-birds.png?height=1664&v=1762768154" class="card-img-top" alt="Bird Detection"><div class="card-body"><h4>Bird Detection AI</h4><p class="text-muted">YOLOv8 + Raspberry Pi + Flask</p></div></div></div>
+        <div class="col-md-4"><div class="card h-100 overflow-hidden"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" class="card-img-top" alt="Wedding Invitation"><div class="card-body"><h4>Wedding Invitation</h4><p class="text-muted">Responsive Web Design</p></div></div></div>
+        <div class="col-md-4"><div class="card h-100 overflow-hidden"><img src="https://i.ytimg.com/vi/_WTCNnULEFg/maxresdefault.jpg" class="card-img-top" alt="Robot Triathlon"><div class="card-body"><h4>Robot Triathlon</h4><p class="text-muted">Wall follower, Line follower & Bluetooth mode</p></div></div></div>
+    </div>
 </section>
 
 <section id="contact" class="py-5">
-    <div class="container text-center">
-        <h2 class="mb-4">Contact</h2>
-        <p class="mb-5 text-muted">Mari terhubung dan berkolaborasi!</p>
-        
-        <div class="d-flex justify-content-center flex-wrap gap-3">
-            <a href="mailto:sonysuhadi10@gmail.com" class="btn btn-outline-info px-4 py-2">
-                <i class="fas fa-envelope me-2"></i>Email
-            </a>
-            
-            <a href="https://wa.me/6281387047210" target="_blank" class="btn btn-outline-info px-4 py-2">
-                <i class="fab fa-whatsapp me-2"></i>WhatsApp
-            </a>
-            
-            <a href="https://www.linkedin.com/in/sony-kurniawan-suhadi-86b1902a2/" target="_blank" class="btn btn-outline-info px-4 py-2">
-                <i class="fab fa-linkedin-in me-2"></i>LinkedIn
-            </a>
-            
-            <a href="https://instagram.com/kurniawansonyy_" target="_blank" class="btn btn-outline-info px-4 py-2">
-                <i class="fab fa-instagram me-2"></i>Instagram
-            </a>
-        </div>
-    </div>
+    <div class="container text-center">
+        <h2 class="mb-4">Contact</h2>
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+            <a href="mailto:sonysuhadi10@gmail.com" class="btn btn-outline-info px-4 py-2"><i class="fas fa-envelope me-2"></i>Email</a>
+            <a href="https://wa.me/6281387047210" target="_blank" class="btn btn-outline-info px-4 py-2"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
+            <a href="https://www.linkedin.com/in/sony-kurniawan-suhadi-86b1902a2/" target="_blank" class="btn btn-outline-info px-4 py-2"><i class="fab fa-linkedin-in me-2"></i>LinkedIn</a>
+            <a href="https://instagram.com/kurniawansonyy_" target="_blank" class="btn btn-outline-info px-4 py-2"><i class="fab fa-instagram me-2"></i>Instagram</a>
+        </div>
+    </div>
 </section>
 
 <footer class="text-center py-4 border-top">
-    <p>© 2026 Sony Kurniawan Suhadi</p>
+    <p>© 2026 Sony Kurniawan Suhadi</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    // Menambah class active otomatis saat discroll
-    window.addEventListener('scroll', () => {
-        let current = '';
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 150;
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(a => {
-            a.classList.remove('active');
-            if (a.getAttribute('href') === `#${current}`) {
-                a.classList.add('active');
-            }
-        });
-    });
-</script>>
-
 </body>
 </html>
