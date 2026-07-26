@@ -3,38 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sony Kurniawan Suhadi | Portfolio</title>
+    <title>Sony Kurniawan Suhadi | IoT Engineer & Network Specialist</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome & Google Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background: #f8fafc; color: #334155; }
-        .navbar { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.9) !important; border-bottom: 1px solid #e2e8f0; }
-        .nav-link { color: #334155 !important; font-weight: 500; }
-        .hero { padding: 150px 0; background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%); }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid #38bdf8; object-fit: cover; margin-bottom: 20px; }
-        .card { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); border-color: #38bdf8; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        section { padding: 80px 0; }
-        h2 { color: #0f172a; margin-bottom: 30px; font-weight: 700; }
-        .bg-soft { background: #f1f5f9; }
-        .skill-box { padding: 15px; text-align: center; }
-        .skill-box img { width: 40px; height: 40px; margin-bottom: 10px; }
-        @media (max-width: 768px) { .hero { padding: 100px 0; } }
+        :root {
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --accent: #38bdf8;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar Glassmorphism */
+        .navbar {
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.85) !important;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main) !important;
+        }
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 600;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 40%),
+                        linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+        }
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .profile-img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+        .badge-status {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #22c55e;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+        }
+
+        /* Typography & Utility */
+        section { padding: 90px 0; }
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 48px;
+        }
+        .bg-soft { background-color: #f1f5f9; }
+
+        /* Card Modern Styling */
+        .custom-card {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .custom-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        /* Tech Badges */
+        .tech-badge {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+
+        /* Project Card Image */
+        .project-img-container {
+            height: 200px;
+            overflow: hidden;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+        .project-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .custom-card:hover .project-img-container img {
+            transform: scale(1.05);
+        }
+
+        /* Skill Card Icon */
+        .icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: #e0f2fe;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+            padding: 12px 28px;
+            border: none;
+            transition: background-color 0.2s;
+        }
+        .btn-custom:hover {
+            background-color: var(--primary-hover);
+            color: white;
+        }
+        .btn-outline-custom {
+            border: 1px solid #cbd5e1;
+            color: var(--text-main);
+            font-weight: 600;
+            border-radius: 10px;
+            padding: 12px 28px;
+            transition: all 0.2s;
+        }
+        .btn-outline-custom:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 120px 0 60px; }
+            section { padding: 60px 0; }
+        }
     </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#">SONY KURNIAWAN SUHADI</a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        <a class="navbar-brand" href="#">SONY KURNIAWAN</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="menu">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto gap-1">
                 <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Keahlian</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experience">Pengalaman</a></li>
                 <li class="nav-item"><a class="nav-link" href="#project">Proyek</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
             </ul>
@@ -42,76 +207,251 @@
     </div>
 </nav>
 
+<!-- Hero Section -->
 <section id="home" class="hero text-center">
     <div class="container">
-        <img src="Sony.png" alt="Profile" class="profile-img">
-        <h1 class="display-4 fw-bold">Sony Kurniawan Suhadi</h1>
-        <p class="lead">IoT Engineer • AI Developer • Web Developer</p>
-        <a href="#project" class="btn btn-outline-info btn-lg mt-3">Lihat Portfolio</a>
+        <div class="profile-wrapper mb-4">
+            <img src="Sony.png" alt="Sony Kurniawan Suhadi" class="profile-img" onerror="this.src='https://via.placeholder.com/170'">
+            <div class="badge-status" title="Aktif / Open for Opportunities"></div>
+        </div>
+        <h1 class="display-5 fw-bold mb-2">Sony Kurniawan Suhadi</h1>
+        <p class="lead text-muted mx-auto mb-4" style="max-width: 600px;">
+            Network Engineer • AI Developer • Systems & IoT Specialist
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="#project" class="btn btn-custom">Lihat Portfolio</a>
+            <a href="#contact" class="btn btn-outline-custom">Hubungi Saya</a>
+        </div>
     </div>
 </section>
 
+<!-- About Section -->
 <section id="about" class="container">
-    <h2 class="text-center">About</h2>
-    <p class="text-center w-75 mx-auto">Mahasiswa Teknik Komputer Universitas Gunadarma yang berfokus pada <strong>Network Engineering</strong>. 
-        Memiliki keahlian dalam arsitektur jaringan, protokol routing, dan optimasi sistem. 
-        Berdedikasi untuk membangun infrastruktur IT yang aman dan skalabel dengan kemampuan pemecahan masalah yang kompleks dalam lingkungan kolaboratif.</p>
+    <div class="row align-items-center justify-content-center">
+        <div class="col-lg-10 text-center">
+            <h2 class="section-title">Tentang Saya</h2>
+            <p class="section-subtitle">Membangun konektivitas tangguh dan solusi cerdas terintegrasi</p>
+            <p class="fs-5 text-muted leading-relaxed">
+                Mahasiswa Teknik Komputer Universitas Gunadarma yang berfokus pada <strong>Network Engineering</strong> dan <strong>Embedded Systems</strong>. Memiliki keahlian mendalam dalam merancang arsitektur jaringan, optimasi protokol routing, integrasi AI pada edge devices, serta pengembangan IoT end-to-end. Berdedikasi untuk membangun infrastruktur IT yang aman, skalabel, dan siap pakai.
+            </p>
+        </div>
+    </div>
 </section>
 
+<!-- Focus Areas -->
 <section id="focus" class="bg-soft">
     <div class="container">
-        <h2 class="text-center mb-5">Professional Focus</h2>
+        <div class="text-center mb-5">
+            <h2 class="section-title">Fokus Profesional</h2>
+            <p class="section-subtitle">Bidang keahlian utama yang sedang dikembangkan</p>
+        </div>
         <div class="row g-4">
-            <div class="col-md-4"><div class="card p-4 h-100 border-0 shadow-sm"><i class="fas fa-network-wired fa-2x text-info mb-3"></i><h4>Network Engineering</h4><p class="text-muted">Fokus pada desain arsitektur jaringan yang tangguh, implementasi protokol routing, serta optimasi infrastruktur.</p></div></div>
-            <div class="col-md-4"><div class="card p-4 h-100 border-0 shadow-sm"><i class="fas fa-microchip fa-2x text-info mb-3"></i><h4>Advanced IoT & Systems</h4><p class="text-muted">Mengintegrasikan perangkat keras (ESP32) dengan ekosistem cloud (Firebase) dan aplikasi mobile (Flutter).</p></div></div>
-            <div class="col-md-4"><div class="card p-4 h-100 border-0 shadow-sm"><i class="fas fa-users-cog fa-2x text-info mb-3"></i><h4>Strategic Collaboration</h4><p class="text-muted">Memanfaatkan kemampuan leadership dan komunikasi strategis untuk manajemen tim dan efisiensi organisasi.</p></div></div>
+            <div class="col-md-4">
+                <div class="custom-card p-4 h-100">
+                    <div class="icon-box"><i class="fas fa-network-wired"></i></div>
+                    <h4 class="fw-bold mb-3">Network Engineering</h4>
+                    <p class="text-muted">Desain arsitektur jaringan yang andal, konfigurasi protokol routing (Cisco/Linux), manajemen bandwidth, serta optimasi keamanan jaringan.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="custom-card p-4 h-100">
+                    <div class="icon-box"><i class="fas fa-microchip"></i></div>
+                    <h4 class="fw-bold mb-3">Advanced IoT & Systems</h4>
+                    <p class="text-muted">Integrasi mikrokontroler (ESP32 & Raspberry Pi) dengan platform cloud (Firebase) serta pengembangan dashboard aplikasi mobile (Flutter).</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="custom-card p-4 h-100">
+                    <div class="icon-box"><i class="fas fa-brain"></i></div>
+                    <h4 class="fw-bold mb-3">AI & Edge Computing</h4>
+                    <p class="text-muted">Implementasi model computer vision (YOLOv8) pada edge device untuk deteksi objek real-time dan analisis data berbasis AI.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="education" class="container">
-    <h2 class="text-center mb-5">Education</h2>
+<!-- Technical Skills & Tools -->
+<section id="skills" class="container">
+    <div class="text-center mb-5">
+        <h2 class="section-title">Keahlian & Tools</h2>
+        <p class="section-subtitle">Teknologi yang biasa digunakan dalam alur kerja harian</p>
+    </div>
     <div class="row g-4 justify-content-center">
-        <div class="col-md-5"><div class="card p-4 h-100 border-0"><div class="d-flex align-items-center mb-3"><i class="fas fa-school fa-2x text-info me-3"></i><h4 class="mb-0">SMA Negeri 1 TAJURHALANG</h4></div><p class="text-muted mb-1">Jurusan IPA</p><small class="text-info">2020 - 2023</small><p class="mt-3">Nilai Akhir 92.00</p></div></div>
-        <div class="col-md-5"><div class="card p-4 h-100 border-0"><div class="d-flex align-items-center mb-3"><i class="fas fa-university fa-2x text-info me-3"></i><h4 class="mb-0">Universitas Gunadarma</h4></div><p class="text-muted mb-1">Teknik Komputer</p><small class="text-info">2023 - Sekarang</small><p class="mt-3">Fokus studi: AI, IoT, System Embedded, Networking</p></div></div>
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fab fa-linux fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">Linux & Networking</h6>
+                <small class="text-muted">Cisco CLI, Ubuntu Server</small>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fas fa-code fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">Programming</h6>
+                <small class="text-muted">Python, Golang, C++</small>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fas fa-mobile-alt fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">Mobile & Web</h6>
+                <small class="text-muted">Flutter, HTML/CSS, Bootstrap</small>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fas fa-cloud fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">IoT Platforms</h6>
+                <small class="text-muted">ESP32, Firebase, MQTT</small>
+            </div>
+        </div>
     </div>
 </section>
 
+<!-- Education & Experience Timeline -->
 <section id="experience" class="bg-soft">
     <div class="container">
-        <h2 class="text-center mb-5">Experience</h2>
-        <div class="row g-4">
-            <div class="col-md-6"><div class="card p-4 h-100"><h5>Asisten Laboratorium Sistem Komputer Lanjut</h5><p class="text-muted">2026 - Present</p><ul><li>Mobile Computing (Flutter & Golang), Basic Networking (Cisco), & Advanced Networking (Linux).</li><li>Mentoring proyek IoT (ESP32, Firebase, Flutter).</li></ul></div></div>
-            <div class="col-md-6"><div class="card p-4 h-100"><h5>Head of Human Resource Development & Creative Media</h5><p class="text-muted">Himatekkom - Universitas Gunadarma | 2023 - Present</p><ul><li>Head of HRD: Menjaga engagement anggota >85%.</li><li>Creative Media: Meningkatkan partisipasi event sebesar 40%.</li></ul></div></div>
+        <div class="row g-5">
+            <!-- Experience -->
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4"><i class="fas fa-briefcase text-primary me-2"></i>Pengalaman</h3>
+                <div class="d-flex flex-column gap-4">
+                    <div class="custom-card p-4">
+                        <span class="badge bg-primary mb-2">2026 - Sekarang</span>
+                        <h5 class="fw-bold mb-1">Asisten Laboratorium Sistem Komputer Lanjut</h5>
+                        <p class="text-muted small mb-3">Universitas Gunadarma</p>
+                        <ul class="text-muted ps-3 mb-0">
+                            <li>Mengajar praktikum Mobile Computing (Flutter & Golang), Basic Networking (Cisco), dan Advanced Networking (Linux).</li>
+                            <li>Membimbing dan memfasilitasi mentoring proyek IoT mahasiswa berbasis ESP32, Firebase, dan Flutter.</li>
+                        </ul>
+                    </div>
+                    <div class="custom-card p-4">
+                        <span class="badge bg-secondary mb-2">2023 - Sekarang</span>
+                        <h5 class="fw-bold mb-1">Head of HRD & Creative Media</h5>
+                        <p class="text-muted small mb-3">Himatekkom - Universitas Gunadarma</p>
+                        <ul class="text-muted ps-3 mb-0">
+                            <li>Memimpin divisi HRD dengan pencapaian angka engagement anggota lebih dari 85%.</li>
+                            <li>Mengelola perencanaan media kreatif untuk menggenjot partisipasi event hingga naik 40%.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4"><i class="fas fa-graduation-cap text-primary me-2"></i>Pendidikan</h3>
+                <div class="d-flex flex-column gap-4">
+                    <div class="custom-card p-4">
+                        <span class="badge bg-primary mb-2">2023 - Sekarang</span>
+                        <h5 class="fw-bold mb-1">S1 Teknik Komputer</h5>
+                        <p class="text-muted small mb-1">Universitas Gunadarma</p>
+                        <p class="text-muted mb-0">Fokus Studi: Artificial Intelligence, Internet of Things, Embedded System, dan Computer Networking.</p>
+                    </div>
+                    <div class="custom-card p-4">
+                        <span class="badge bg-secondary mb-2">2020 - 2023</span>
+                        <h5 class="fw-bold mb-1">SMA Negeri 1 TAJURHALANG</h5>
+                        <p class="text-muted small mb-1">MIPA (Matematika dan Ilmu Pengetahuan Alam)</p>
+                        <p class="text-muted mb-0">Lulus dengan Nilai Akhir Rata-rata <strong>92.00</strong>.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- Projects -->
 <section id="project" class="container">
-    <h2 class="text-center mb-5">Projects</h2>
-    <div class="row g-4">
-        <div class="col-md-4"><div class="card h-100 overflow-hidden"><img src="https://birdgoo.com/cdn/shop/files/a-goups-of-birds-flying-ai-detection-with-green-bords-target-these-birds.png?height=1664&v=1762768154" class="card-img-top" alt="Bird Detection"><div class="card-body"><h4>Bird Detection AI</h4><p class="text-muted">YOLOv8 + Raspberry Pi + Flask</p></div></div></div>
-        <div class="col-md-4"><div class="card h-100 overflow-hidden"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" class="card-img-top" alt="Wedding Invitation"><div class="card-body"><h4>Wedding Invitation</h4><p class="text-muted">Responsive Web Design</p></div></div></div>
-        <div class="col-md-4"><div class="card h-100 overflow-hidden"><img src="https://i.ytimg.com/vi/_WTCNnULEFg/maxresdefault.jpg" class="card-img-top" alt="Robot Triathlon"><div class="card-body"><h4>Robot Triathlon</h4><p class="text-muted">Wall follower, Line follower & Bluetooth mode</p></div></div></div>
+    <div class="text-center mb-5">
+        <h2 class="section-title">Proyek Unggulan</h2>
+        <p class="section-subtitle">Portofolio proyek hardware, jaringan, dan pengembangan perangkat lunak</p>
     </div>
-</section>
+    <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-md-4">
+            <div class="custom-card h-100 d-flex flex-column">
+                <div class="project-img-container">
+                    <img src="https://birdgoo.com/cdn/shop/files/a-goups-of-birds-flying-ai-detection-with-green-bords-target-these-birds.png?height=1664&v=1762768154" alt="Bird Detection AI" onerror="this.src='https://via.placeholder.com/400x200'">
+                </div>
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <h4 class="fw-bold mb-2">Bird Detection AI System</h4>
+                        <p class="text-muted small mb-3">Sistem deteksi kawanan burung secara terintegrasi menggunakan arsitektur edge AI untuk monitoring area pertanian/lingkungan.</p>
+                    </div>
+                    <div>
+                        <span class="tech-badge">YOLOv8</span>
+                        <span class="tech-badge">Raspberry Pi</span>
+                        <span class="tech-badge">Flask API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<section id="contact" class="py-5">
-    <div class="container text-center">
-        <h2 class="mb-4">Contact</h2>
-        <div class="d-flex justify-content-center flex-wrap gap-3">
-            <a href="mailto:sonysuhadi10@gmail.com" class="btn btn-outline-info px-4 py-2"><i class="fas fa-envelope me-2"></i>Email</a>
-            <a href="https://wa.me/6281387047210" target="_blank" class="btn btn-outline-info px-4 py-2"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
-            <a href="https://www.linkedin.com/in/sony-kurniawan-suhadi-86b1902a2/" target="_blank" class="btn btn-outline-info px-4 py-2"><i class="fab fa-linkedin-in me-2"></i>LinkedIn</a>
-            <a href="https://instagram.com/kurniawansonyy_" target="_blank" class="btn btn-outline-info px-4 py-2"><i class="fab fa-instagram me-2"></i>Instagram</a>
+        <!-- Project 2 -->
+        <div class="col-md-4">
+            <div class="custom-card h-100 d-flex flex-column">
+                <div class="project-img-container">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt="Wedding Invitation" onerror="this.src='https://via.placeholder.com/400x200'">
+                </div>
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <h4 class="fw-bold mb-2">Digital Wedding Invitation</h4>
+                        <p class="text-muted small mb-3">Undangan digital responsif yang interaktif dilengkapi fitur konfirmasi RSVP, peta lokasi, dan integrasi musik.</p>
+                    </div>
+                    <div>
+                        <span class="tech-badge">HTML/CSS</span>
+                        <span class="tech-badge">Bootstrap 5</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col-md-4">
+            <div class="custom-card h-100 d-flex flex-column">
+                <div class="project-img-container">
+                    <img src="https://i.ytimg.com/vi/_WTCNnULEFg/maxresdefault.jpg" alt="Robot Triathlon" onerror="this.src='https://via.placeholder.com/400x200'">
+                </div>
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <h4 class="fw-bold mb-2">Autonomous Robot Triathlon</h4>
+                        <p class="text-muted small mb-3">Robot pemandu otomatis berkemampuan multimodus: Wall Follower, Line Follower, dan Kendali Manual via Bluetooth.</p>
+                    </div>
+                    <div>
+                        <span class="tech-badge">Arduino/ESP32</span>
+                        <span class="tech-badge">Robotics</span>
+                        <span class="tech-badge">Sensors</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<footer class="text-center py-4 border-top">
-    <p>© 2026 Sony Kurniawan Suhadi</p>
+<!-- Contact Section -->
+<section id="contact" class="bg-soft">
+    <div class="container text-center" style="max-width: 700px;">
+        <h2 class="section-title">Mari Terhubung</h2>
+        <p class="section-subtitle">Terbuka untuk diskusi proyek jaringan, kolaborasi riset IoT, maupun peluang karir.</p>
+        
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+            <a href="mailto:sonysuhadi10@gmail.com" class="btn btn-outline-custom"><i class="fas fa-envelope me-2 text-danger"></i>Email</a>
+            <a href="https://wa.me/6281387047210" target="_blank" class="btn btn-outline-custom"><i class="fab fa-whatsapp me-2 text-success"></i>WhatsApp</a>
+            <a href="https://www.linkedin.com/in/sony-kurniawan-suhadi-86b1902a2/" target="_blank" class="btn btn-outline-custom"><i class="fab fa-linkedin-in me-2 text-primary"></i>LinkedIn</a>
+            <a href="https://instagram.com/kurniawansonyy_" target="_blank" class="btn btn-outline-custom"><i class="fab fa-instagram me-2 text-danger"></i>Instagram</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4 bg-white border-top">
+    <div class="container">
+        <p class="text-muted mb-0 small">© 2026 Sony Kurniawan Suhadi. Designed with clean modern layout.</p>
+    </div>
 </footer>
 
+<!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
