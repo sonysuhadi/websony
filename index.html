@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sony Kurniawan Suhaidi | IoT Engineer & Network Specialist</title>
+    <title>Sony Kurniawan Suhadi | IoT Engineer & Network Specialist</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome & Google Fonts -->
@@ -179,6 +179,21 @@
             background: white;
         }
 
+        /* Stats Box */
+        .stat-card {
+            border-right: 1px solid #e2e8f0;
+        }
+        @media (max-width: 767px) {
+            .stat-card {
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+                padding-bottom: 1rem;
+            }
+            .stat-card:last-child {
+                border-bottom: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero { padding: 120px 0 60px; }
             section { padding: 60px 0; }
@@ -190,7 +205,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">SONY KURNIAWAN</a>
+        <a class="navbar-brand" href="#">SONY KURNIAWAN SUHADI</a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -198,7 +213,6 @@
             <ul class="navbar-nav ms-auto gap-1">
                 <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
-                <li class="nav-item"><a class="nav-link" href="#focus">Fokus</a></li>
                 <li class="nav-item"><a class="nav-link" href="#skills">Keahlian</a></li>
                 <li class="nav-item"><a class="nav-link" href="#experience">Pengalaman</a></li>
                 <li class="nav-item"><a class="nav-link" href="#project">Proyek</a></li>
@@ -212,15 +226,17 @@
 <section id="home" class="hero text-center">
     <div class="container">
         <div class="profile-wrapper mb-4">
-            <img src="Sony.png" alt="Sony Kurniawan Suhaidi" class="profile-img" onerror="this.src='https://via.placeholder.com/170'">
+            <img src="Sony.png" alt="Sony Kurniawan Suhadi" class="profile-img" onerror="this.src='https://via.placeholder.com/170'">
             <div class="badge-status" title="Aktif / Open for Opportunities"></div>
         </div>
-        <h1 class="display-5 fw-bold mb-2">Sony Kurniawan Suhaidi</h1>
+        <h1 class="display-5 fw-bold mb-2">Sony Kurniawan Suhadi</h1>
         <p class="lead text-muted mx-auto mb-4" style="max-width: 600px;">
             Network Engineer • AI Developer • Systems & IoT Specialist
         </p>
-        <div class="d-flex justify-content-center gap-3">
+        <!-- CTA Buttons -->
+        <div class="d-flex justify-content-center flex-wrap gap-3">
             <a href="#project" class="btn btn-custom">Lihat Portfolio</a>
+            <a href="CV_Sony_Kurniawan_Suhadi.pdf" target="_blank" class="btn btn-outline-custom"><i class="fas fa-file-download me-2 text-primary"></i>Unduh CV</a>
             <a href="#contact" class="btn btn-outline-custom">Hubungi Saya</a>
         </div>
     </div>
@@ -232,9 +248,28 @@
         <div class="col-lg-10 text-center">
             <h2 class="section-title">Tentang Saya</h2>
             <p class="section-subtitle">Membangun konektivitas tangguh dan solusi cerdas terintegrasi</p>
-            <p class="fs-5 text-muted leading-relaxed">
-                Mahasiswa Teknik Komputer Universitas Gunadarma yang berfokus pada <strong>Network Engineering</strong>, <strong>Server Administration</strong>, dan <strong>Embedded Systems</strong>. Memiliki keahlian mendalam dalam merancang arsitektur jaringan, kontainerisasi aplikasi, integrasi AI pada edge devices, serta pengembangan sistem IoT end-to-end. Berdedikasi untuk membangun infrastruktur IT yang aman, skalabel, dan andal.
+            <p class="fs-5 text-muted leading-relaxed mb-5">
+                Mahasiswa Teknik Komputer Universitas Gunadarma yang berfokus pada <strong>Network Engineering</strong>, <strong>IoT Systems</strong>, dan <strong>Server Administration</strong>. Memiliki keahlian mendalam dalam pemrograman mikrokontroler via Arduino IDE, pengandangan aplikasi dengan Docker, manajemen basis data MySQL, integrasi AI pada edge devices, serta arsitektur jaringan yang aman dan skalabel.
             </p>
+
+            <!-- Metrik Angka (Counter Strip) -->
+            <div class="custom-card p-4">
+                <div class="row text-center g-3">
+                    <div class="col-md-4 stat-card">
+                        <h2 class="fw-bold text-primary mb-1">10+</h2>
+                        <p class="text-muted small mb-0 fw-semibold">Proyek IoT & Embedded Systems</p>
+                    </div>
+                    <div class="col-md-4 stat-card">
+                        <h2 class="fw-bold text-primary mb-1">2+ Tahun</h2>
+                        <p class="text-muted small mb-0 fw-semibold">Pengalaman Asisten Laboratorium</p>
+                    </div>
+                    <div class="col-md-4 stat-card">
+                        <h2 class="fw-bold text-primary mb-1">85%+</h2>
+                        <p class="text-muted small mb-0 fw-semibold">Organizational Engagement Rate</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -257,8 +292,8 @@
             <div class="col-md-4">
                 <div class="custom-card p-4 h-100">
                     <div class="icon-box"><i class="fas fa-microchip"></i></div>
-                    <h4 class="fw-bold mb-3">Advanced IoT & Systems</h4>
-                    <p class="text-muted">Integrasi mikrokontroler (ESP32 & Raspberry Pi) dengan platform cloud, manajemen database, serta pengembangan dashboard aplikasi mobile (Flutter).</p>
+                    <h4 class="fw-bold mb-3">IoT & Cloud Infrastructure</h4>
+                    <p class="text-muted">Integrasi mikrokontroler (ESP32/Arduino) dengan kontainerisasi Docker, manajemen database MySQL/Firebase, serta aplikasi monitoring Flutter.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -276,85 +311,57 @@
 <section id="skills" class="container">
     <div class="text-center mb-5">
         <h2 class="section-title">Keahlian & Tools</h2>
-        <p class="section-subtitle">Infrastruktur server, pengembangan IoT, dan ekosistem tools harian</p>
+        <p class="section-subtitle">Teknologi dan infrastruktur yang biasa digunakan dalam alur kerja harian</p>
     </div>
     <div class="row g-4 justify-content-center">
-
-        <!-- Server & Infrastructure -->
-        <div class="col-md-4 col-sm-6">
-            <div class="custom-card p-4 h-100">
-                <div class="icon-box"><i class="fas fa-server"></i></div>
-                <h5 class="fw-bold mb-2">Server & Infrastructure</h5>
-                <p class="text-muted small mb-3">Pengelolaan server Linux, sistem kontainerisasi aplikasi, serta otomatisasi deployment.</p>
-                <div>
-                    <span class="tech-badge">Ubuntu / Debian</span>
-                    <span class="tech-badge">Docker</span>
-                    <span class="tech-badge">Nginx / Apache</span>
-                    <span class="tech-badge">SSH & Bash</span>
-                </div>
+        <!-- Card 1: Server & Containers -->
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fab fa-docker fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">Server & Containers</h6>
+                <small class="text-muted">Docker, Ubuntu Server, Nginx</small>
             </div>
         </div>
-
-        <!-- IoT & Embedded Systems -->
-        <div class="col-md-4 col-sm-6">
-            <div class="custom-card p-4 h-100">
-                <div class="icon-box"><i class="fas fa-microchip"></i></div>
-                <h5 class="fw-bold mb-2">IoT & Embedded Systems</h5>
-                <p class="text-muted small mb-3">Pemrograman mikrokontroler, integrasi sensor/aktuator, dan protokol komunikasi IoT.</p>
-                <div>
-                    <span class="tech-badge">ESP32 / ESP8266</span>
-                    <span class="tech-badge">Arduino IDE</span>
-                    <span class="tech-badge">MQTT Broker</span>
-                    <span class="tech-badge">C / C++</span>
-                </div>
+        <!-- Card 2: IoT & Hardware -->
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fas fa-microchip fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">IoT & Microcontroller</h6>
+                <small class="text-muted">Arduino IDE, ESP32, MQTT</small>
             </div>
         </div>
-
-        <!-- Database & Cloud Backend -->
-        <div class="col-md-4 col-sm-6">
-            <div class="custom-card p-4 h-100">
-                <div class="icon-box"><i class="fas fa-database"></i></div>
-                <h5 class="fw-bold mb-2">Database & Cloud</h5>
-                <p class="text-muted small mb-3">Penyimpanan dan manajemen data terstruktur maupun real-time untuk sistem IoT dan web.</p>
-                <div>
-                    <span class="tech-badge">MySQL</span>
-                    <span class="tech-badge">Firebase Realtime</span>
-                    <span class="tech-badge">REST API</span>
-                    <span class="tech-badge">phpMyAdmin</span>
-                </div>
+        <!-- Card 3: Database & Cloud -->
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fas fa-database fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">Database Systems</h6>
+                <small class="text-muted">MySQL, Firebase, REST API</small>
             </div>
         </div>
-
-        <!-- Networking & Security -->
-        <div class="col-md-4 col-sm-6">
-            <div class="custom-card p-4 h-100">
-                <div class="icon-box"><i class="fas fa-network-wired"></i></div>
-                <h5 class="fw-bold mb-2">Networking & Security</h5>
-                <p class="text-muted small mb-3">Desain arsitektur jaringan, konfigurasi routing, ACL, serta analisis lalu lintas data.</p>
-                <div>
-                    <span class="tech-badge">Cisco IOS</span>
-                    <span class="tech-badge">MikroTik</span>
-                    <span class="tech-badge">Wireshark</span>
-                    <span class="tech-badge">Subnetting / OSPF</span>
-                </div>
+        <!-- Card 4: Networking -->
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fas fa-network-wired fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">Linux & Networking</h6>
+                <small class="text-muted">Cisco CLI, MikroTik, Wireshark</small>
             </div>
         </div>
-
-        <!-- Software & Mobile Dev -->
-        <div class="col-md-4 col-sm-6">
-            <div class="custom-card p-4 h-100">
-                <div class="icon-box"><i class="fas fa-code"></i></div>
-                <h5 class="fw-bold mb-2">Software & Mobile Dev</h5>
-                <p class="text-muted small mb-3">Pengembangan aplikasi antarmuka pengguna untuk pemantauan IoT dan otomatisasi skrip.</p>
-                <div>
-                    <span class="tech-badge">Flutter (Dart)</span>
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Golang</span>
-                    <span class="tech-badge">Bootstrap 5</span>
-                </div>
+        <!-- Card 5: Programming -->
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fas fa-code fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">Programming</h6>
+                <small class="text-muted">Python, Golang, C/C++</small>
             </div>
         </div>
-
+        <!-- Card 6: Mobile & Web -->
+        <div class="col-md-3 col-6">
+            <div class="custom-card p-3 text-center">
+                <i class="fas fa-mobile-alt fa-2x text-primary mb-2"></i>
+                <h6 class="fw-bold m-0">Mobile & Web</h6>
+                <small class="text-muted">Flutter, HTML/CSS, Bootstrap</small>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -496,7 +503,7 @@
 <!-- Footer -->
 <footer class="text-center py-4 bg-white border-top">
     <div class="container">
-        <p class="text-muted mb-0 small">© 2026 Sony Kurniawan Suhaidi. Designed with clean modern layout.</p>
+        <p class="text-muted mb-0 small">© 2026 Sony Kurniawan Suhadi. Designed with clean modern layout.</p>
     </div>
 </footer>
 
