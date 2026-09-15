@@ -2106,6 +2106,344 @@ body::before {
 .map-panel::after {
     background-image: none !important;
 }
+
+/* =========================
+   FINAL MOBILE + MOTION POLISH
+   ========================= */
+
+/* Keep motion subtle on desktop too */
+.profile-wrapper::before{animation-duration:18s;}
+.profile-card::before{animation-duration:8s;}
+.profile-card::after{animation-duration:7s;}
+.skill-icon i{animation-duration:6s;}
+.map-line.active{animation-duration:4s;}
+.map-pulse{animation-duration:3.2s;}
+
+@media(max-width:900px){
+    .container{
+        width:min(var(--container),calc(100% - 32px));
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .map-panel{
+        width:100%;
+        min-width:0;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .skills-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .projects-grid,
+    .capabilities,
+    .building-grid{
+        grid-template-columns:1fr;
+    }
+
+    .journey-item{
+        grid-template-columns:1fr;
+        gap:8px;
+    }
+
+    .contact-terminal-body{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:700px){
+    html{scroll-padding-top:70px;}
+
+    body{
+        overflow-x:hidden;
+    }
+
+    .container{
+        width:calc(100% - 28px);
+    }
+
+    section{
+        padding:72px 0;
+    }
+
+    .hero{
+        min-height:auto;
+        padding-top:95px;
+        padding-bottom:55px;
+    }
+
+    .hero-terminal-body{
+        padding:30px 18px 28px;
+    }
+
+    .hero-terminal-body h1{
+        font-size:clamp(34px,10.5vw,46px);
+        line-height:1.05;
+        letter-spacing:-2px;
+        overflow-wrap:anywhere;
+    }
+
+    .hero-description{
+        font-size:13px;
+        line-height:1.75;
+    }
+
+    .hero-terminal-bar{
+        grid-template-columns:58px minmax(0,1fr) auto;
+        padding:0 12px;
+    }
+
+    .hero-terminal-title{
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
+
+    .hero-terminal-status{
+        font-size:9px;
+    }
+
+    .hero-terminal-footer{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:3px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+    }
+
+    .map-panel{
+        min-height:360px;
+        border-radius:14px;
+    }
+
+    .map-svg{
+        inset:48px 6px 40px;
+        width:calc(100% - 12px);
+        height:calc(100% - 88px);
+    }
+
+    .map-meta{
+        left:12px;
+        right:12px;
+        gap:10px;
+        font-size:8px;
+    }
+
+    .map-meta span{
+        white-space:nowrap;
+    }
+
+    .profile-wrapper{
+        width:100%;
+        max-width:520px;
+        margin:0 auto;
+        padding:7px;
+    }
+
+    .profile-wrapper::before{
+        animation:none;
+    }
+
+    .profile-card::before,
+    .profile-card::after{
+        animation:none;
+        opacity:.16;
+    }
+
+    .profile-card:hover{
+        transform:none;
+        box-shadow:none;
+    }
+
+    .skill-card:hover,
+    .project-card:hover{
+        transform:none;
+    }
+
+    .skill-icon i{
+        animation:none;
+        transform:none;
+    }
+
+    .project-image{
+        height:180px;
+    }
+
+    .project-content{
+        padding:18px;
+    }
+
+    .project-content h3{
+        font-size:19px;
+        overflow-wrap:anywhere;
+    }
+
+    .project-content p{
+        font-size:12px;
+    }
+
+    .capability,
+    .building-card{
+        padding:22px;
+    }
+
+    .contact-terminal-body{
+        padding:32px 18px 22px;
+    }
+
+    .contact-title{
+        font-size:clamp(36px,11vw,46px);
+        line-height:1;
+        letter-spacing:-2.3px;
+        overflow-wrap:anywhere;
+    }
+
+    .contact-item{
+        grid-template-columns:46px minmax(0,1fr) 18px;
+        column-gap:10px;
+        padding:12px;
+        min-width:0;
+    }
+
+    .contact-icon{
+        width:42px;
+        height:42px;
+        font-size:17px;
+    }
+
+    .contact-value{
+        min-width:0;
+        font-size:11px;
+        overflow-wrap:anywhere;
+    }
+
+    .contact-arrow{
+        font-size:20px;
+    }
+
+    .contact-status-line{
+        font-size:9px;
+    }
+
+    .project-modal{
+        padding:8px;
+    }
+
+    .project-modal-window{
+        width:100%;
+        max-height:92vh;
+        border-radius:9px;
+    }
+
+    .project-modal-body{
+        padding:25px 18px 28px;
+    }
+
+    .project-modal-body h2{
+        font-size:27px;
+        line-height:1.15;
+        overflow-wrap:anywhere;
+    }
+
+    .project-modal-body>p{
+        font-size:13px;
+    }
+
+    .modal-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .nav-actions{
+        gap:7px;
+    }
+
+    .language-switch{
+        font-size:10px;
+    }
+
+    .robot-assistant-fab{
+        width:54px;
+        height:54px;
+        right:14px;
+        bottom:14px;
+        border-radius:15px;
+    }
+}
+
+@media(max-width:380px){
+    .container{
+        width:calc(100% - 20px);
+    }
+
+    .hero-terminal-body{
+        padding:27px 15px 24px;
+    }
+
+    .hero-terminal-body h1{
+        font-size:34px;
+    }
+
+    .hero-terminal-status{
+        display:none;
+    }
+
+    .language-switch{
+        font-size:9px;
+        padding:5px 6px;
+    }
+
+    .nav-links{
+        padding-left:14px;
+        padding-right:14px;
+    }
+
+    .map-panel{
+        min-height:330px;
+    }
+
+    .contact-item{
+        grid-template-columns:40px minmax(0,1fr) 16px;
+        column-gap:8px;
+        padding:10px;
+    }
+
+    .contact-icon{
+        width:38px;
+        height:38px;
+        font-size:15px;
+    }
+
+    .contact-title{
+        font-size:35px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+    }
+}
+
 </style>
 
 </head>
@@ -3247,7 +3585,7 @@ body::before {
 
             <article class="project-card terminal-project-card">
     <div class="project-image">
-        <img src="pemira-himatekkom.jpg" alt="Website Pemira HIMATEKKOM">
+        <img src="pemira.jpg" alt="Website Pemira HIMATEKKOM">
         <div class="project-status">Completed</div>
     </div>
 
@@ -3531,19 +3869,19 @@ const projectData = {
         path:'sony@engineering: ~/projects/bird-detection',
         kicker:'COMPLETED',
         title:'Bird Detection System',
-        description:'Sistem deteksi dan pengusiran hama burung pada tanaman padi menggunakan computer vision berbasis Raspberry Pi. Sistem menggabungkan kamera, YOLOv8, GPIO, REST API, PostgreSQL, Docker, dan aplikasi Flutter untuk monitoring.',
+        description:'Sistem deteksi dan pengusir hama burung berbasis computer vision menggunakan Raspberry Pi untuk pengujian pada lingkungan pertanian terlindungi. Sistem menggabungkan kamera, YOLOv8, GPIO, REST API, PostgreSQL, Docker, dan aplikasi Flutter untuk monitoring.',
         stack:['Raspberry Pi','YOLOv8','Python','Flask','PostgreSQL','Docker','Flutter','Cloudflare'],
         role:'System design, edge inference, backend integration, device control, dan mobile monitoring.',
         details:'Pipeline sistem berjalan dari kamera dan inference di edge device menuju Flask REST API dan PostgreSQL pada server. Data deteksi, status perangkat, dan telemetri dapat dipantau melalui aplikasi mobile. Project ini menjadi implementasi utama computer vision dan edge computing dalam portfolio.'
     },
-    wedding: {
-        path:'sony@engineering: ~/projects/wedding-invitation',
+    pemira: {
+        path:'sony@engineering: ~/projects/pemira-himatekkom',
         kicker:'COMPLETED',
-        title:'Digital Wedding Invitation',
-        description:'Website undangan digital responsif yang dirancang agar informasi acara dapat disajikan secara sederhana, cepat, dan nyaman di berbagai ukuran layar.',
-        stack:['HTML5','CSS3','JavaScript','Responsive UI'],
-        role:'Frontend development, interface design, responsive implementation.',
-        details:'Fokus project berada pada struktur halaman, visual hierarchy, responsive layout, dan interaksi berbasis JavaScript agar pengalaman pengguna tetap konsisten pada desktop maupun mobile.'
+        title:'Website Pemira HIMATEKKOM',
+        description:'Website Pemilihan Raya Mahasiswa HIMATEKKOM yang dirancang untuk menampilkan informasi kandidat dan mendukung proses pendaftaran serta pemilihan secara digital.',
+        stack:['PHP','MySQL','JavaScript','HTML5','CSS3'],
+        role:'Frontend development, interface design, responsive implementation, dan database integration.',
+        details:'Project berfokus pada pembuatan antarmuka Pemira HIMATEKKOM yang responsif, terstruktur, dan mudah digunakan pada desktop maupun perangkat mobile, dengan integrasi database untuk kebutuhan data kandidat.'
     },
     robot: {
         path:'sony@engineering: ~/projects/robot-oson',
@@ -3634,7 +3972,7 @@ const translations = {
         projectsTitle: 'Things I have built.',
         projectsDesc: 'Selected projects representing my experience in computer vision, embedded systems, web development, robotics, networking, and infrastructure. Each project includes technical details that can be opened directly from this terminal-style portfolio.',
         projectBird: 'A computer-vision bird pest detection and deterrence system connecting Raspberry Pi, YOLOv8, server API, database, and mobile monitoring.',
-        projectWedding: 'A responsive digital wedding invitation website with a modern interface designed for different device sizes.',
+        projectPemira: 'A responsive HIMATEKKOM student election website for candidate information, registration, and digital election workflows.',
         projectRobot: 'An autonomous Arduino-based robot using sensors for navigation and to complete several robotics challenges.',
         projectInfra: 'Infrastructure experiments and environment development using Linux, Docker, MikroTik, Cisco, and Proxmox.',
         viewDetail: 'view detail',
@@ -3672,7 +4010,7 @@ const translations = {
         projectsTitle: 'Things I have built.',
         projectsDesc: 'Beberapa project yang merepresentasikan pengalaman saya dalam computer vision, embedded systems, web development, robotics, networking, dan infrastructure. Setiap project punya detail teknis yang bisa dibuka langsung dari terminal portfolio ini.',
         projectBird: 'Sistem deteksi dan pengusiran hama burung berbasis computer vision yang menghubungkan Raspberry Pi, YOLOv8, server API, database, dan mobile monitoring.',
-        projectWedding: 'Website undangan digital responsif dengan tampilan modern yang dapat diakses melalui berbagai ukuran perangkat.',
+        projectPemira: 'Website Pemira HIMATEKKOM yang responsif untuk informasi kandidat, pendaftaran, dan kebutuhan proses pemilihan digital.',
         projectRobot: 'Robot autonomous berbasis Arduino yang menggunakan sensor untuk melakukan navigasi dan menyelesaikan beberapa tantangan robotika.',
         projectInfra: 'Eksperimen dan pengembangan lingkungan infrastructure menggunakan Linux, Docker, MikroTik, Cisco, dan Proxmox.',
         viewDetail: 'view detail',
@@ -3740,7 +4078,7 @@ function applyLanguage(lang){
     setText('#projects .section-title', t.projectsTitle);
     setText('#projects .section-description', t.projectsDesc);
     const projectDesc = document.querySelectorAll('#projects .project-content > p');
-    [t.projectBird,t.projectWedding,t.projectRobot,t.projectInfra].forEach((v,i)=>{if(projectDesc[i]) projectDesc[i].textContent=v;});
+    [t.projectBird,t.projectPemira,t.projectRobot,t.projectInfra].forEach((v,i)=>{if(projectDesc[i]) projectDesc[i].textContent=v;});
     document.querySelectorAll('.project-detail-btn').forEach(btn=>{
         const arrow = btn.querySelector('span');
         btn.childNodes[0].textContent = t.viewDetail + ' ';
@@ -3772,7 +4110,7 @@ languageButtons.forEach(btn=>{
 /* Bilingual project modal data */
 const projectEN = {
     bird:{kicker:'ACTIVE DEVELOPMENT',description:'A computer-vision bird pest detection and deterrence system connecting Raspberry Pi, YOLOv8, server API, database, and mobile monitoring.',role:'System design, edge inference, backend integration, device control, and mobile monitoring.',details:'The system pipeline runs from camera capture and edge inference to a Flask REST API and PostgreSQL database on the server. Detection data, device status, and telemetry can be monitored through a mobile application. This project represents the implementation of computer vision and edge computing in the portfolio.'},
-    wedding:{kicker:'COMPLETED',description:'A responsive digital wedding invitation website designed to present event information in a simple, fast, and accessible way across different screen sizes.',role:'Frontend development, interface design, and responsive implementation.',details:'The project focuses on page structure, visual hierarchy, responsive layout, and JavaScript-based interactions to keep the user experience consistent across desktop and mobile.'},
+    pemira:{kicker:'COMPLETED',description:'A responsive HIMATEKKOM student election website for candidate information, registration, and digital election workflows.',role:'Frontend development, interface design, responsive implementation, and database integration.',details:'The project focuses on a structured and responsive interface for HIMATEKKOM student elections, with database integration for candidate data and a user experience designed for desktop and mobile.'},
     robot:{kicker:'COMPLETED',description:'An autonomous Arduino-based robot designed to read sensors, determine movement responses, and complete several robotics challenges independently.',role:'Embedded programming, sensor integration, control logic, and testing.',details:'The project focuses on integrating sensors and actuators with control logic so the robot can respond to track conditions without manual control. The project image uses robot-oson.jpg.'},
     infrastructure:{kicker:'ONGOING',description:'Infrastructure experiments and environment development for learning deployment, networking, virtualization, containerization, and server management.',role:'Infrastructure setup, network configuration, virtualization, container deployment, and troubleshooting.',details:'The lab is used to build and test Linux, container, virtual machine, and network-device environments. This approach builds an understanding of how applications and services operate from the infrastructure side, not only the application side.'}
 };
@@ -3866,7 +4204,7 @@ const robotCopy = {
         skills:'skill Sony mencakup Linux Ubuntu, Docker, Cisco, Python, Flutter, Firebase, Raspberry Pi, Arduino, MySQL, PostgreSQL, Git, GitHub, MikroTik, PHP, HTML5, dan CSS3.',
         education:'Sony sedang menempuh Teknik Komputer di Universitas Gunadarma sejak 2023. Sebelumnya ia menempuh Ilmu Pengetahuan Alam di SMA Negeri 1 Tajurhalang pada 2020–2023.',
         experience:'pengalaman Sony meliputi Laboratory Assistant di Advanced Computer System Laboratory UG, Head Human Resources Department di HIMATEKKOM UG, dan Staff Social Media Designer di HIMATEKKOM UG.',
-        projects:'project yang ditampilkan meliputi Bird Detection System, Digital Wedding Invitation, Autonomous Robot Triathlon, dan Infrastructure Lab. Fokus project mencakup computer vision, Raspberry Pi, Arduino, networking, dan infrastructure.',
+        projects:'project yang ditampilkan meliputi Bird Detection System, Website Pemira HIMATEKKOM, Autonomous Robot Triathlon, dan Infrastructure Lab. Fokus project mencakup computer vision, Raspberry Pi, Arduino, networking, dan infrastructure.',
         contact:'Sony dapat dihubungi melalui email sonysuhadi10@gmail.com, WhatsApp +62 813-8704-7210, LinkedIn Sony Kurniawan Suhadi, atau Instagram @kurniawansonyy_.'
     },
     en: {
@@ -3880,7 +4218,7 @@ const robotCopy = {
         skills:"Sony's skills include Linux Ubuntu, Docker, Cisco, Python, Flutter, Firebase, Raspberry Pi, Arduino, MySQL, PostgreSQL, Git, GitHub, MikroTik, PHP, HTML5, and CSS3.",
         education:'Sony has been studying Computer Engineering at Universitas Gunadarma since 2023. Previously, he studied Natural Sciences at SMA Negeri 1 Tajurhalang from 2020–2023.',
         experience:"Sony's experience includes Laboratory Assistant at Advanced Computer System Laboratory UG, Head Human Resources Department at HIMATEKKOM UG, and Staff Social Media Designer at HIMATEKKOM UG.",
-        projects:'featured projects include Bird Detection System, Digital Wedding Invitation, Autonomous Robot Triathlon, and Infrastructure Lab. The projects cover computer vision, Raspberry Pi, Arduino, networking, and infrastructure.',
+        projects:'featured projects include Bird Detection System, Website Pemira HIMATEKKOM, Autonomous Robot Triathlon, and Infrastructure Lab. The projects cover computer vision, Raspberry Pi, Arduino, networking, and infrastructure.',
         contact:'Sony can be reached via email at sonysuhadi10@gmail.com, WhatsApp at +62 813-8704-7210, LinkedIn as Sony Kurniawan Suhadi, or Instagram @kurniawansonyy_.'
     }
 };
@@ -3903,7 +4241,7 @@ function robotIntent(text){
     if(/\b(skill|skills|keahlian|technology|technologies|tools|stack|teknologi|kemampuan)\b/.test(q)) return 'skills';
     if(/\b(pendidikan|education|kuliah|kampus|university|universitas|school|sekolah|study|studied)\b/.test(q)) return 'education';
     if(/\b(pengalaman|experience|work|kerja|laboratory|lab|himatekkom|organisasi|organization)\b/.test(q)) return 'experience';
-    if(/\b(project|projects|proyek|portfolio|portofolio|bird|robot|wedding|infrastructure)\b/.test(q)) return 'projects';
+    if(/\b(project|projects|proyek|portfolio|portofolio|bird|robot|pemira|infrastructure)\b/.test(q)) return 'projects';
     if(/\b(contact|kontak|email|whatsapp|wa|linkedin|instagram|reach|hubungi|hubung)\b/.test(q)) return 'contact';
     if(/\b(network|networking|server|linux|iot|edge|ai|computer vision|raspberry|docker|cisco|mikrotik)\b/.test(q)) return 'skills';
     return null;
