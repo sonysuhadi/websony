@@ -375,160 +375,355 @@ section{
     align-items:center;
 }
 
+
+/* =========================
+   REALISTIC LANYARD + ID CARD
+========================= */
 .profile-wrapper{
     position:relative;
+    width:100%;
+    min-height:560px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    perspective:1200px;
+    padding:0;
     isolation:isolate;
-    perspective:1000px;
-    padding:10px;
+    overflow:visible;
 }
 
-/* Animated engineering frame */
-.profile-wrapper::before{
+/* no outer profile box / frame */
+.profile-wrapper::before,
+.profile-wrapper::after{
+    display:none !important;
+}
+
+.lanyard-scene{
+    --strap-width:22px;
+    --strap-bottom:326px;
+    --pull:0px;
+    --card-width:184px;
+    --card-height:266px;
+    position:relative;
+    width:300px;
+    height:500px;
+    transform-style:preserve-3d;
+    user-select:none;
+    touch-action:none;
+}
+
+.lanyard-scene::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:18px;
+    width:135px;
+    height:24px;
+    transform:translateX(-50%) scaleX(calc(1 + var(--pull) / 900));
+    border-radius:50%;
+    background:rgba(0,0,0,.42);
+    filter:blur(18px);
+    opacity:.6;
+    z-index:-4;
+    pointer-events:none;
+}
+
+/* ONE CONTINUOUS FABRIC LOOP */
+.lanyard-loop{
+    position:absolute;
+    top:18px;
+    left:50%;
+    width:205px;
+    height:360px;
+    transform:translateX(-50%);
+    pointer-events:none;
+    z-index:3;
+    overflow:visible;
+}
+
+.lanyard-svg{
+    width:100%;
+    height:100%;
+    display:block;
+    overflow:visible;
+}
+
+.lanyard-path-shadow{
+    fill:none;
+    stroke:rgba(0,0,0,.30);
+    stroke-width:27;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+    transform:translateY(5px);
+}
+
+.lanyard-path{
+    fill:none;
+    stroke:url(#lanyardBlue);
+    stroke-width:22;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+}
+
+.lanyard-edge{
+    fill:none;
+    stroke:rgba(255,255,255,.42);
+    stroke-width:1.15;
+    stroke-linecap:butt;
+    stroke-linejoin:miter;
+}
+
+.lanyard-detail{
+    fill:none;
+    stroke:rgba(255,255,255,.30);
+    stroke-width:2.2;
+    stroke-linecap:round;
+    stroke-dasharray:1 7;
+    opacity:.75;
+}
+
+.lanyard-highlight{
+    fill:none;
+    stroke:rgba(255,255,255,.68);
+    stroke-width:1.1;
+    stroke-linecap:round;
+    opacity:.85;
+}
+
+.lanyard-text{
+    fill:#082849;
+    font:800 5.8px "Space Grotesk",sans-serif;
+    letter-spacing:.38px;
+    text-anchor:middle;
+    paint-order:stroke;
+    stroke:rgba(255,255,255,.42);
+    stroke-width:.3px;
+}
+
+.lanyard-top-text{
+    fill:#0a3158;
+    font:800 5.8px "Space Grotesk",sans-serif;
+    letter-spacing:.42px;
+    text-anchor:middle;
+}
+
+/* connector follows the ID card when pulled */
+.lanyard-hardware{
+    position:absolute;
+    top:calc(var(--strap-bottom) + 12px);
+    left:50%;
+    width:46px;
+    height:58px;
+    transform:translateX(-50%) translateY(var(--pull));
+    z-index:6;
+    pointer-events:none;
+}
+
+.hardware-bar{
+    position:absolute;
+    top:0;
+    left:5px;
+    right:5px;
+    height:11px;
+    border-radius:3px;
+    background:linear-gradient(180deg,#eef4f8,#7c8b95 42%,#27323a 48%,#b6c2c9 78%,#56636b);
+    border:1px solid #1e252a;
+    box-shadow:0 3px 6px rgba(0,0,0,.35);
+}
+
+.hardware-neck{
+    position:absolute;
+    left:14px;
+    top:9px;
+    width:18px;
+    height:31px;
+    border:4px solid #7f8d96;
+    border-top:0;
+    border-radius:0 0 9px 9px;
+    box-shadow:inset 2px 0 3px rgba(255,255,255,.3),2px 2px 5px rgba(0,0,0,.3);
+}
+
+.hardware-ring{
+    position:absolute;
+    left:13px;
+    bottom:1px;
+    width:20px;
+    height:20px;
+    border:5px solid #8c9aa3;
+    border-radius:50%;
+    box-shadow:inset 1px 1px 2px rgba(255,255,255,.35),0 2px 5px rgba(0,0,0,.35);
+}
+
+/* ID card */
+.id-card{
+    position:absolute;
+    left:50%;
+    top:calc(var(--strap-bottom) + 65px + var(--pull));
+    width:var(--card-width);
+    height:var(--card-height);
+    transform:translateX(-50%) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotateZ(var(--rz,0deg));
+    transform-style:preserve-3d;
+    transform-origin:50% -12px;
+    cursor:grab;
+    z-index:8;
+    touch-action:none;
+    transition:box-shadow .3s ease;
+    filter:drop-shadow(0 18px 20px rgba(0,0,0,.28));
+}
+
+.id-card.dragging{cursor:grabbing;}
+
+.id-card-face{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    border-radius:13px;
+    border:1px solid rgba(155,215,255,.55);
+    background:
+        radial-gradient(circle at 82% 8%,rgba(93,190,255,.22),transparent 30%),
+        linear-gradient(145deg,#102a43,#0b1724 55%,#071019);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.18),
+        inset 0 0 0 1px rgba(0,0,0,.22),
+        0 12px 30px rgba(0,0,0,.30),
+        0 0 30px rgba(70,160,255,.10);
+    backface-visibility:hidden;
+}
+
+.id-card-face::after{
+    content:"";
+    position:absolute;
+    top:-7px;
+    left:50%;
+    width:22px;
+    height:14px;
+    transform:translateX(-50%);
+    border:2px solid rgba(177,214,240,.72);
+    border-radius:7px 7px 4px 4px;
+    background:linear-gradient(180deg,#122f4c,#071522);
+    box-shadow:0 0 0 2px rgba(4,17,29,.55);
+    z-index:6;
+}
+
+.id-card-face::before{
     content:"";
     position:absolute;
     inset:0;
-    z-index:-2;
-    border-radius:calc(var(--radius) + 8px);
-    background:conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        rgba(74,144,226,.08) 55deg,
-        rgba(87,205,255,.95) 100deg,
-        rgba(125,92,255,.85) 145deg,
-        transparent 205deg,
-        transparent 270deg,
-        rgba(66,211,146,.7) 320deg,
-        transparent 360deg
-    );
-    filter:blur(.2px);
-    animation:frameRotate 7s linear infinite;
-}
-
-.profile-wrapper::after{
-    content:"";
-    position:absolute;
-    inset:4px;
-    z-index:-1;
-    border:1px solid rgba(120,170,255,.16);
-    border-radius:calc(var(--radius) + 5px);
-    box-shadow:
-        0 0 0 1px rgba(255,255,255,.025) inset,
-        0 0 30px rgba(62,130,255,.08);
+    background:
+        linear-gradient(135deg,transparent 0 34%,rgba(100,190,255,.08) 34.2% 34.8%,transparent 35%),
+        repeating-linear-gradient(135deg,transparent 0 16px,rgba(120,190,255,.035) 16px 17px);
     pointer-events:none;
 }
 
-.profile-card{
+.id-header{
     position:relative;
-    overflow:hidden;
-    background:var(--surface);
-    border:1px solid rgba(115,145,190,.28);
-    border-radius:var(--radius);
-    padding:12px;
-    transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .35s ease;
-    transform-style:preserve-3d;
-}
-
-/* moving light sweep */
-.profile-card::before{
-    content:"";
-    position:absolute;
-    top:-40%;
-    left:-65%;
-    width:38%;
-    height:180%;
     z-index:2;
-    pointer-events:none;
-    background:linear-gradient(90deg, transparent, rgba(125,205,255,.20), transparent);
-    transform:rotate(18deg);
-    animation:photoSweep 4.8s ease-in-out infinite;
+    height:50px;
+    padding:12px 13px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(135,205,255,.18);
 }
 
-/* subtle scanning line */
-.profile-card::after{
-    content:"";
-    position:absolute;
-    left:12px;
-    right:12px;
-    top:12px;
-    height:1px;
-    z-index:3;
-    pointer-events:none;
-    background:linear-gradient(90deg, transparent, rgba(87,205,255,.7), transparent);
-    box-shadow:0 0 12px rgba(87,205,255,.35);
-    animation:photoScan 3.8s ease-in-out infinite;
+.id-university{
+    font:700 10px/1.1 "Space Grotesk",sans-serif;
+    letter-spacing:1.1px;
+    color:#e9f7ff;
 }
 
-.profile-card:hover{
-    transform:translateY(-8px) rotateX(2deg) rotateY(-2deg);
-    border-color:rgba(100,180,255,.55);
-    box-shadow:
-        0 18px 50px rgba(0,0,0,.32),
-        0 0 30px rgba(70,150,255,.10);
+.id-year{
+    font:700 9px monospace;
+    color:#69c8ff;
 }
 
-@keyframes frameRotate{
-    to{transform:rotate(360deg);}
+.id-body{
+    position:relative;
+    z-index:2;
+    padding:12px 14px;
 }
 
-@keyframes photoSweep{
-    0%, 12%{left:-65%;opacity:0;}
-    22%{opacity:1;}
-    55%{left:125%;opacity:.9;}
-    65%,100%{left:125%;opacity:0;}
+.id-photo-wrap{
+    width:96px;
+    height:118px;
+    margin:0 auto 11px;
+    padding:4px;
+    border-radius:9px;
+    background:linear-gradient(135deg,#73cfff,#1c74b8,#8b7cff);
+    box-shadow:0 7px 18px rgba(0,0,0,.28);
 }
 
-@keyframes photoScan{
-    0%,15%{top:12px;opacity:0;}
-    25%{opacity:.7;}
-    70%{top:calc(100% - 13px);opacity:.55;}
-    85%,100%{top:calc(100% - 13px);opacity:0;}
-}
-
-.profile-photo{
+.id-photo{
     width:100%;
-    aspect-ratio:1/1;
+    height:100%;
     object-fit:cover;
-
-    border-radius:10px;
-
-    user-select:none;
+    object-position:center top;
+    border-radius:6px;
+    background:#111;
     -webkit-user-drag:none;
-
-    cursor:pointer;
-
-    transition:transform .25s ease;
 }
 
-.profile-photo.photo-click{
-    animation:photoClick .45s ease;
+.id-name{
+    text-align:center;
+    font:800 15.5px/1.12 "Space Grotesk",sans-serif;
+    letter-spacing:.2px;
+    color:#f2f8ff;
 }
 
-@keyframes photoClick{
-    0%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(.96);
-    }
-    100%{
-        transform:scale(1);
-    }
+.id-role{
+    margin-top:5px;
+    text-align:center;
+    font:700 8px monospace;
+    letter-spacing:1.15px;
+    color:#62c6ff;
 }
 
-.profile-info{
-    padding:18px 8px 8px;
+.id-footer{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:36px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 13px;
+    border-top:1px solid rgba(135,205,255,.15);
+    color:#6f94ae;
+    font:8px monospace;
+    letter-spacing:.6px;
 }
 
-.profile-name{
-    font-family:"Space Grotesk",sans-serif;
-    font-size:20px;
-    font-weight:600;
+.id-chip{
+    width:24px;
+    height:17px;
+    border:1px solid #7c9baa;
+    border-radius:4px;
+    background:linear-gradient(135deg,#c9e3e9,#597986);
+    box-shadow:inset 0 0 0 2px rgba(0,0,0,.15);
 }
 
-.profile-role{
-    margin-top:3px;
-    color:var(--text-muted);
-    font-size:12px;
+.id-shine{
+    position:absolute;
+    inset:-20% -55%;
+    z-index:4;
+    background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.20) 49%,transparent 56%);
+    transform:translateX(-70%) rotate(8deg);
+    animation:idShine 6s ease-in-out infinite;
+    pointer-events:none;
+}
+
+
+@keyframes ribbonShine{
+    0%,55%{transform:translateX(-90%);opacity:0;}
+    66%{opacity:.7;}
+    82%,100%{transform:translateX(90%);opacity:0;}
+}
+
+@keyframes idShine{
+    0%,52%{transform:translateX(-70%) rotate(8deg);opacity:0;}
+    62%{opacity:1;}
+    76%,100%{transform:translateX(70%) rotate(8deg);opacity:0;}
 }
 
 .about-content h3{
@@ -1772,7 +1967,7 @@ section:not(.hero)::before{
 
 .section-title{letter-spacing:-2px;}
 
-.skill-card,.project-card,.journey-item,.fact,.profile-card{
+.skill-card,.project-card,.journey-item,.fact{
     background:rgba(12,18,25,.78);
     border-color:var(--border);
 }
@@ -2081,6 +2276,86 @@ section{position:relative}
     .robot-chat-panel{right:15px;bottom:87px;width:calc(100vw - 30px);height:min(510px,70vh)}
 }
 
+
+/* FINAL CLEAN LANYARD POLISH v3 */
+/* Thin, realistic strap + larger balanced ID card */
+.lanyard-scene{
+    --strap-width:13px;
+    --strap-bottom:302px;
+    --pull:0px;
+    --card-width:220px;
+    --card-height:315px;
+    width:300px;
+    height:610px;
+}
+.lanyard-loop{
+    width:185px;
+    height:335px;
+    top:14px;
+}
+.lanyard-path-shadow{
+    stroke-width:17px;
+    opacity:.24;
+}
+.lanyard-path{
+    stroke-width:13px;
+}
+.lanyard-edge{
+    stroke-width:.65px;
+    opacity:.55;
+}
+.lanyard-detail,
+.lanyard-highlight,
+.lanyard-overlay{
+    display:none !important;
+}
+.lanyard-text{
+    font-size:4.7px;
+    letter-spacing:.20px;
+    stroke:none;
+}
+.lanyard-top-text{display:none;}
+.lanyard-hardware{
+    top:calc(var(--strap-bottom) + 7px);
+    transform:translateX(-50%) translateY(var(--pull)) scale(.86);
+}
+.id-card{
+    top:calc(var(--strap-bottom) + 55px + var(--pull));
+    width:var(--card-width);
+    height:var(--card-height);
+}
+.id-card-face::before{display:none;}
+.id-shine{display:none;}
+.id-header{
+    height:56px;
+    padding:13px 15px;
+}
+.id-university{
+    font-size:11px;
+    letter-spacing:1.15px;
+}
+.id-year{font-size:9px;}
+.id-body{padding:15px 15px;}
+.id-photo-wrap{
+    width:112px;
+    height:140px;
+    margin-bottom:13px;
+    padding:4px;
+    border-radius:10px;
+}
+.id-name{font-size:17px;}
+.id-role{
+    font-size:8px;
+    letter-spacing:1.15px;
+    margin-top:6px;
+}
+.id-footer{
+    height:39px;
+    padding:0 14px;
+}
+.id-footer span{display:none;}
+.id-chip{width:25px;height:17px;}
+
 </style>
 
 <style>
@@ -2112,9 +2387,7 @@ body::before {
    ========================= */
 
 /* Keep motion subtle on desktop too */
-.profile-wrapper::before{animation-duration:18s;}
-.profile-card::before{animation-duration:8s;}
-.profile-card::after{animation-duration:7s;}
+.lanyard-scene{animation:lanyardFloat 5.5s ease-in-out infinite;}
 .skill-icon i{animation-duration:6s;}
 .map-line.active{animation-duration:4s;}
 .map-pulse{animation-duration:3.2s;}
@@ -2250,24 +2523,21 @@ body::before {
 
     .profile-wrapper{
         width:100%;
-        max-width:520px;
+        min-height:520px;
         margin:0 auto;
-        padding:7px;
+        padding:0;
+        overflow:visible;
     }
 
-    .profile-wrapper::before{
+    .lanyard-scene{
+        transform:scale(.86);
+        transform-origin:top center;
+        margin-bottom:-70px;
+    }
+
+    .lanyard-ribbon::after,
+    .id-shine{
         animation:none;
-    }
-
-    .profile-card::before,
-    .profile-card::after{
-        animation:none;
-        opacity:.16;
-    }
-
-    .profile-card:hover{
-        transform:none;
-        box-shadow:none;
     }
 
     .skill-card:hover,
@@ -2444,8 +2714,290 @@ body::before {
     }
 }
 
+
+@keyframes lanyardFloat{
+    0%,100%{transform:translateY(0) rotateZ(0deg);}
+    50%{transform:translateY(-7px) rotateZ(.35deg);}
+}
 </style>
 
+<style>
+
+/* =========================================================
+   SONY AI — PREMIUM PORTFOLIO CHAT
+   ========================================================= */
+.sony-ai-launcher{
+  position:fixed;right:28px;bottom:28px;z-index:3000;
+  width:64px;height:64px;border:1px solid rgba(110,168,254,.45);
+  border-radius:20px;cursor:pointer;color:#eaf4ff;
+  background:linear-gradient(145deg,rgba(18,31,48,.96),rgba(10,16,24,.96));
+  box-shadow:0 16px 45px rgba(0,0,0,.42),0 0 34px rgba(110,168,254,.12);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.sony-ai-launcher:hover{transform:translateY(-4px) scale(1.03);border-color:rgba(110,168,254,.8);box-shadow:0 20px 55px rgba(0,0,0,.5),0 0 45px rgba(110,168,254,.2)}
+.sony-ai-launcher .ai-core{
+  position:absolute;inset:12px;border-radius:15px;
+  display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 25%,#9bc8ff,transparent 28%),linear-gradient(135deg,#214c79,#101c2b);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 22px rgba(110,168,254,.2);
+}
+.sony-ai-launcher i{font-size:22px}
+.sony-ai-launcher .ai-dot{
+  position:absolute;right:8px;top:8px;width:10px;height:10px;border-radius:50%;
+  background:#3fb950;border:2px solid #0d1218;box-shadow:0 0 12px rgba(63,185,80,.8)
+}
+.sony-ai-panel{
+  position:fixed;right:28px;bottom:105px;z-index:2999;
+  width:min(410px,calc(100vw - 28px));height:min(650px,calc(100vh - 135px));
+  display:flex;flex-direction:column;overflow:hidden;
+  border:1px solid rgba(126,164,205,.25);border-radius:22px;
+  background:linear-gradient(145deg,rgba(14,20,28,.97),rgba(8,12,17,.985));
+  box-shadow:0 30px 90px rgba(0,0,0,.62),0 0 50px rgba(72,134,205,.08);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  opacity:0;visibility:hidden;transform:translateY(18px) scale(.97);
+  transform-origin:bottom right;transition:opacity .25s ease,transform .3s ease,visibility .25s;
+}
+.sony-ai-panel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.sony-ai-panel::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 100% 0,rgba(110,168,254,.1),transparent 32%),linear-gradient(120deg,transparent 45%,rgba(255,255,255,.018) 50%,transparent 55%)
+}
+.sony-ai-head{
+  position:relative;display:flex;align-items:center;gap:12px;padding:15px 16px;
+  border-bottom:1px solid rgba(255,255,255,.07);background:rgba(12,18,25,.72)
+}
+.sony-ai-avatar{
+  width:40px;height:40px;border-radius:13px;display:grid;place-items:center;flex:none;
+  color:#e9f4ff;background:linear-gradient(145deg,#244f7d,#111d2b);
+  border:1px solid rgba(126,190,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 20px rgba(110,168,254,.12)
+}
+.sony-ai-avatar i{font-size:16px}
+.sony-ai-head-copy{min-width:0;flex:1}
+.sony-ai-title{font:700 14px "Space Grotesk",sans-serif;letter-spacing:.2px}
+.sony-ai-status{margin-top:2px;color:#72d47e;font:10px monospace;letter-spacing:.7px}
+.sony-ai-actions{display:flex;gap:5px}
+.sony-ai-iconbtn{
+  width:31px;height:31px;border:1px solid transparent;border-radius:9px;
+  background:transparent;color:#7f8b97;cursor:pointer;transition:.2s
+}
+.sony-ai-iconbtn:hover{color:#e9e7df;background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}
+.sony-ai-body{
+  position:relative;flex:1;overflow:auto;padding:18px 15px 12px;
+  scrollbar-width:thin;scrollbar-color:#293746 transparent;
+}
+.sony-ai-body::-webkit-scrollbar{width:5px}.sony-ai-body::-webkit-scrollbar-thumb{background:#293746;border-radius:10px}
+.sony-ai-welcome{
+  padding:14px;border:1px solid rgba(110,168,254,.14);border-radius:15px;
+  background:linear-gradient(145deg,rgba(110,168,254,.06),rgba(255,255,255,.015));
+  margin-bottom:14px
+}
+.sony-ai-welcome .mini-terminal{color:#6f8499;font:10px monospace;margin-bottom:8px}
+.sony-ai-welcome h4{font:600 15px "Space Grotesk",sans-serif;margin-bottom:5px}
+.sony-ai-welcome p{color:#8f9ba7;font-size:11px;line-height:1.65}
+.sony-ai-suggestions{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.sony-ai-suggestion{
+  border:1px solid rgba(126,164,205,.18);border-radius:999px;padding:7px 10px;
+  background:rgba(255,255,255,.025);color:#9ba8b5;font:10px Inter,sans-serif;cursor:pointer;transition:.2s
+}
+.sony-ai-suggestion:hover{border-color:rgba(110,168,254,.45);color:#dcecff;background:rgba(110,168,254,.07)}
+.sony-ai-msg{display:flex;margin:10px 0;animation:sonyMsgIn .25s ease both}
+.sony-ai-msg.user{justify-content:flex-end}.sony-ai-msg.assistant{justify-content:flex-start}
+.sony-ai-bubble{
+  max-width:84%;padding:10px 12px;border-radius:15px;font-size:12px;line-height:1.65;
+  white-space:pre-wrap;word-break:break-word
+}
+.sony-ai-msg.assistant .sony-ai-bubble{
+  border:1px solid rgba(126,164,205,.13);background:rgba(255,255,255,.035);color:#c5ced8;border-top-left-radius:5px
+}
+.sony-ai-msg.user .sony-ai-bubble{
+  color:#eef6ff;background:linear-gradient(135deg,rgba(54,104,158,.9),rgba(35,66,100,.9));
+  border:1px solid rgba(126,190,255,.2);border-top-right-radius:5px
+}
+.sony-ai-meta{font:9px monospace;color:#5f6c78;margin:4px 2px 0}
+.sony-ai-msg.user .sony-ai-meta{text-align:right}
+.sony-ai-typing{display:flex;gap:4px;align-items:center;padding:12px 13px}
+.sony-ai-typing span{width:5px;height:5px;border-radius:50%;background:#79aee4;animation:sonyTyping 1.1s infinite}
+.sony-ai-typing span:nth-child(2){animation-delay:.15s}.sony-ai-typing span:nth-child(3){animation-delay:.3s}
+.sony-ai-footer{padding:10px 12px 12px;border-top:1px solid rgba(255,255,255,.07);background:rgba(8,13,19,.72)}
+.sony-ai-input-wrap{
+  display:flex;align-items:flex-end;gap:8px;padding:7px 7px 7px 12px;
+  border:1px solid rgba(126,164,205,.18);border-radius:15px;background:rgba(255,255,255,.025);
+  transition:.2s
+}
+.sony-ai-input-wrap:focus-within{border-color:rgba(110,168,254,.45);box-shadow:0 0 0 3px rgba(110,168,254,.05)}
+#sonyAIInput{
+  flex:1;resize:none;min-height:24px;max-height:100px;outline:0;border:0;background:transparent;color:#e9e7df;
+  font:12px/1.55 Inter,sans-serif
+}
+#sonyAIInput::placeholder{color:#596672}
+.sony-ai-send{
+  width:36px;height:36px;border:1px solid rgba(126,190,255,.25);border-radius:11px;
+  background:linear-gradient(135deg,#315f8e,#1a3047);color:#eaf5ff;cursor:pointer;transition:.2s;flex:none
+}
+.sony-ai-send:hover{transform:translateY(-1px);filter:brightness(1.12)}
+.sony-ai-send:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.sony-ai-hint{padding:6px 3px 0;color:#4f5b66;font:9px monospace}
+@keyframes sonyMsgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes sonyTyping{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+@media(max-width:600px){
+  .sony-ai-launcher{right:16px;bottom:17px;width:58px;height:58px;border-radius:18px}
+  .sony-ai-panel{right:10px;bottom:86px;width:calc(100vw - 20px);height:min(72vh,620px);border-radius:20px}
+  .sony-ai-bubble{max-width:89%}
+}
+@media(prefers-reduced-motion:reduce){
+  .sony-ai-panel,.sony-ai-launcher,.sony-ai-msg,.sony-ai-typing span{animation:none;transition:none}
+}
+
+/* =========================================================
+   SONY AI — COMPACT / NO EMPTY SPACE
+   ========================================================= */
+.sony-ai-panel{
+  /* override global section padding */
+  padding:0 !important;
+  height:auto;
+  max-height:min(560px,calc(100vh - 125px));
+}
+.sony-ai-body{
+  flex:0 1 auto;
+  min-height:0;
+  max-height:330px;
+}
+.sony-ai-welcome{
+  margin-bottom:8px;
+}
+.sony-ai-footer{
+  padding:9px 12px 10px;
+}
+
+@media(max-width:600px){
+  .sony-ai-panel{
+    left:8px;
+    right:8px;
+    bottom:82px;
+    width:auto;
+    height:auto;
+    max-height:calc(100dvh - 94px);
+    border-radius:18px;
+  }
+
+  .sony-ai-head{
+    padding:11px 12px;
+    gap:9px;
+  }
+
+  .sony-ai-avatar{
+    width:36px;
+    height:36px;
+    border-radius:11px;
+  }
+
+  .sony-ai-title{font-size:13px}
+  .sony-ai-status{font-size:9px}
+  .sony-ai-actions{gap:2px}
+  .sony-ai-iconbtn{width:29px;height:29px}
+
+  .sony-ai-body{
+    max-height:min(42dvh,300px);
+    padding:10px 10px 8px;
+  }
+
+  .sony-ai-welcome{
+    padding:11px;
+    margin-bottom:7px;
+    border-radius:13px;
+  }
+
+  .sony-ai-welcome .mini-terminal{
+    margin-bottom:6px;
+    font-size:9px;
+  }
+
+  .sony-ai-welcome h4{
+    font-size:14px;
+    margin-bottom:4px;
+  }
+
+  .sony-ai-welcome p{
+    font-size:10.5px;
+    line-height:1.45;
+  }
+
+  .sony-ai-suggestions{
+    gap:5px;
+    margin-top:8px;
+  }
+
+  .sony-ai-suggestion{
+    padding:6px 8px;
+    font-size:9px;
+  }
+
+  .sony-ai-msg{margin:7px 0}
+  .sony-ai-bubble{
+    max-width:90%;
+    padding:8px 10px;
+    font-size:11px;
+    line-height:1.5;
+  }
+
+  .sony-ai-footer{
+    padding:7px 9px 8px;
+  }
+
+  .sony-ai-input-wrap{
+    gap:6px;
+    padding:6px 6px 6px 10px;
+    border-radius:13px;
+  }
+
+  #sonyAIInput{
+    min-height:22px;
+    font-size:11px;
+  }
+
+  .sony-ai-send{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+  }
+
+  .sony-ai-hint{
+    padding:5px 2px 0;
+    font-size:8px;
+  }
+}
+
+@media(max-width:380px){
+  .sony-ai-panel{
+    left:5px;
+    right:5px;
+    bottom:76px;
+    max-height:calc(100dvh - 84px);
+  }
+
+  .sony-ai-body{
+    max-height:39dvh;
+    padding:8px;
+  }
+
+  .sony-ai-head{padding:10px}
+  .sony-ai-welcome{padding:10px}
+  .sony-ai-welcome p{font-size:10px}
+  .sony-ai-suggestion{padding:5px 7px}
+  .sony-ai-footer{padding:6px 7px 7px}
+}
+
+/* Mobile keyboard / landscape safety */
+@media(max-width:600px) and (orientation:landscape){
+  .sony-ai-panel{
+    bottom:8px;
+    max-height:calc(100dvh - 16px);
+  }
+  .sony-ai-body{max-height:38dvh}
+}
+
+</style>
 </head>
 
 <body>
@@ -2575,26 +3127,61 @@ body::before {
 
             <div class="profile-wrapper">
 
-                <div class="profile-card">
+                <div class="lanyard-scene" id="lanyardScene">
 
-                    <img
-                        src="Sony.png"
-                        alt="Sony Kurniawan Suhadi"
-                        class="profile-photo"
-                        draggable="false"
-                        id="profilePhoto"
-                    >
+                    <div class="lanyard-loop" aria-hidden="true">
+                        <svg class="lanyard-svg" viewBox="0 0 185 335" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="lanyardBlue" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0" stop-color="#d8e8f7"/>
+                                    <stop offset="25%" stop-color="#ffffff"/>
+                                    <stop offset="50%" stop-color="#eaf3fb"/>
+                                    <stop offset="72%" stop-color="#8eaed0"/>
+                                    <stop offset="100%" stop-color="#163e70"/>
+                                </linearGradient>
+                                <path id="leftTextPath" d="M15 16 L92.5 302"/>
+                                <path id="rightTextPath" d="M170 16 L92.5 302"/>
+                            </defs>
+                            <path id="lanyardShadowPath" class="lanyard-path-shadow" d="M15 16 H170 L92.5 302 Z"/>
+                            <path id="lanyardPath" class="lanyard-path" d="M15 16 H170 L92.5 302 Z"/>
+                            <path class="lanyard-edge" d="M15 16 H170 L92.5 302 Z"/>
+                            <text class="lanyard-text">
+                                <textPath href="#leftTextPath" startOffset="53%">GUNADARMA UNIVERSITY</textPath>
+                            </text>
+                            <text class="lanyard-text">
+                                <textPath href="#rightTextPath" startOffset="53%">GUNADARMA UNIVERSITY</textPath>
+                            </text>
+                        </svg>
+                    </div>
 
-                    <div class="profile-info">
+                    <div class="lanyard-hardware" aria-hidden="true">
+                        <div class="hardware-bar"></div>
+                        <div class="hardware-neck"></div>
+                        <div class="hardware-ring"></div>
+                    </div>
 
-                        <div class="profile-name">
-                            Sony Kurniawan Suhadi
+                    <div class="id-card" id="profilePhoto" role="button" tabindex="0" aria-label="ID card Sony Kurniawan Suhadi">
+                        <div class="id-card-face">
+                            <div class="id-header">
+                                <div class="id-university">GUNADARMA UNIVERSITY</div>
+                                <div class="id-year">2026</div>
+                            </div>
+
+                            <div class="id-body">
+                                <div class="id-photo-wrap">
+                                    <img src="Sony.png" alt="Sony Kurniawan Suhadi" class="id-photo" draggable="false">
+                                </div>
+                                <div class="id-name">Sony Kurniawan Suhadi</div>
+                                <div class="id-role">COMPUTER ENGINEERING · STUDENT</div>
+                            </div>
+
+                            <div class="id-footer">
+                                <div class="id-chip"></div>
+                                <span>UNIVERSITAS GUNADARMA</span>
+                            </div>
+
+                            <div class="id-shine"></div>
                         </div>
-
-                        <div class="profile-role">
-                            Computer Engineering Student
-                        </div>
-
                     </div>
 
                 </div>
@@ -3822,19 +4409,142 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 
 
 /* =========================
-   PROFILE PHOTO CLICK
+   LANYARD + ID CARD INTERACTION
 ========================= */
 
 const profilePhoto = document.getElementById("profilePhoto");
+const lanyardScene = document.getElementById("lanyardScene");
 
-profilePhoto.addEventListener("click", () => {
+let cardDragging = false;
+let pointerId = null;
+let startX = 0;
+let startY = 0;
+let startPull = 0;
+let targetPull = 0;
+let currentPull = 0;
+let targetRY = 0;
+let targetRX = 0;
+let currentRY = 0;
+let currentRX = 0;
+let targetRZ = 0;
+let currentRZ = 0;
+let velocityX = 0;
+let velocityY = 0;
+let lastX = 0;
+let lastY = 0;
+let lastTime = 0;
 
-    profilePhoto.classList.remove("photo-click");
+const clamp = (v,min,max) => Math.max(min,Math.min(max,v));
 
-    void profilePhoto.offsetWidth;
+function renderLanyard(){
+    currentPull += (targetPull-currentPull)*.14;
+    currentRY += (targetRY-currentRY)*.14;
+    currentRX += (targetRX-currentRX)*.14;
+    currentRZ += (targetRZ-currentRZ)*.12;
 
-    profilePhoto.classList.add("photo-click");
+    lanyardScene.style.setProperty('--pull', `${currentPull}px`);
 
+    const y = 302 + currentPull;
+    const pathD = `M15 16 H170 L92.5 ${y} Z`;
+    const path = document.getElementById("lanyardPath");
+    const shadowPath = document.getElementById("lanyardShadowPath");
+    if(path) path.setAttribute("d", pathD);
+    if(shadowPath) shadowPath.setAttribute("d", pathD);
+
+    document.querySelectorAll(".lanyard-edge").forEach(edge => edge.setAttribute("d", pathD));
+
+    const leftText = document.getElementById("leftTextPath");
+    const rightText = document.getElementById("rightTextPath");
+    if(leftText) leftText.setAttribute("d", `M15 16 L92.5 ${y - 0.5}`);
+    if(rightText) rightText.setAttribute("d", `M170 16 L92.5 ${y - 0.5}`);
+
+    profilePhoto.style.setProperty('--ry', `${currentRY}deg`);
+    profilePhoto.style.setProperty('--rx', `${currentRX}deg`);
+    profilePhoto.style.setProperty('--rz', `${currentRZ}deg`);
+
+    requestAnimationFrame(renderLanyard);
+}
+requestAnimationFrame(renderLanyard);
+
+profilePhoto.addEventListener('pointerdown', e => {
+    cardDragging = true;
+    pointerId = e.pointerId;
+    profilePhoto.setPointerCapture(pointerId);
+    profilePhoto.classList.add('dragging');
+
+    startX = e.clientX;
+    startY = e.clientY;
+    startPull = targetPull;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    lastTime = performance.now();
+    velocityX = 0;
+    velocityY = 0;
+    e.preventDefault();
+});
+
+profilePhoto.addEventListener('pointermove', e => {
+    if(!cardDragging || e.pointerId !== pointerId) return;
+
+    const now = performance.now();
+    const dt = Math.max(8,now-lastTime);
+    const dx = e.clientX-lastX;
+    const dy = e.clientY-lastY;
+
+    velocityX = dx/dt;
+    velocityY = dy/dt;
+
+    const totalX = e.clientX-startX;
+    const totalY = e.clientY-startY;
+
+    // Pull the ID card down. The fabric ribbon stretches visually with it.
+    targetPull = clamp(startPull + totalY*.92,-18,250);
+
+    // Horizontal movement rotates the card, vertical movement adds a small pitch.
+    targetRY = clamp(totalX*.30 + velocityX*75,-22,22);
+    targetRX = clamp(-totalY*.045 - velocityY*10,-12,12);
+    targetRZ = clamp(totalX*.045,-7,7);
+
+    lastX = e.clientX;
+    lastY = e.clientY;
+    lastTime = now;
+});
+
+function releaseCard(){
+    if(!cardDragging) return;
+    cardDragging = false;
+    profilePhoto.classList.remove('dragging');
+
+    // A little inertial sway, then spring back to the hanging position.
+    targetRY = clamp(targetRY + velocityX*115,-18,18);
+    targetRX = clamp(targetRX - velocityY*35,-10,10);
+    targetRZ = clamp(targetRZ + velocityX*25,-6,6);
+    targetPull = 0;
+}
+
+profilePhoto.addEventListener('pointerup', releaseCard);
+profilePhoto.addEventListener('pointercancel', releaseCard);
+profilePhoto.addEventListener('lostpointercapture', () => {
+    if(cardDragging) releaseCard();
+});
+
+profilePhoto.addEventListener('keydown', e => {
+    if(e.key === 'ArrowDown'){
+        e.preventDefault();
+        targetPull = clamp(targetPull+28,0,220);
+    }
+    if(e.key === 'ArrowUp'){
+        e.preventDefault();
+        targetPull = clamp(targetPull-28,0,220);
+    }
+    if(e.key === 'ArrowLeft'){
+        e.preventDefault();
+        targetRY = clamp(targetRY-8,-25,25);
+    }
+    if(e.key === 'ArrowRight'){
+        e.preventDefault();
+        targetRY = clamp(targetRY+8,-25,25);
+    }
 });
 
 
@@ -4306,6 +5016,216 @@ applyLanguage = function(lang){
 };
 
 robotRefreshLanguage(true);
+</script>
+
+
+<!-- SONY AI -->
+<button class="sony-ai-launcher" id="sonyAILauncher" aria-label="Open SONY AI" aria-expanded="false">
+  <span class="ai-core"><i class="fa-solid fa-sparkles"></i></span>
+  <span class="ai-dot"></span>
+</button>
+
+<section class="sony-ai-panel" id="sonyAIPanel" aria-label="SONY AI chatbot">
+  <header class="sony-ai-head">
+    <div class="sony-ai-avatar"><i class="fa-solid fa-microchip"></i></div>
+    <div class="sony-ai-head-copy">
+      <div class="sony-ai-title">SONY AI</div>
+      <div class="sony-ai-status">● ONLINE · GEMINI</div>
+    </div>
+    <div class="sony-ai-actions">
+      <button class="sony-ai-iconbtn" id="sonyAIClear" title="Clear chat" aria-label="Clear chat"><i class="fa-solid fa-rotate-left"></i></button>
+      <button class="sony-ai-iconbtn" id="sonyAIClose" title="Close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </header>
+
+  <div class="sony-ai-body" id="sonyAIBody">
+    <div class="sony-ai-welcome" id="sonyAIWelcome">
+      <div class="mini-terminal">sony@portfolio:~$ ./sony-ai</div>
+      <h4>Hey, I'm SONY AI.</h4>
+      <p>Tanya apa saja tentang Sony, project, skill, teknologi, atau perjalanan pengembangan portfolio ini.</p>
+      <div class="sony-ai-suggestions">
+        <button class="sony-ai-suggestion" data-q="siapa Sony?">siapa Sony?</button>
+        <button class="sony-ai-suggestion" data-q="project apa saja yang pernah dibuat Sony?">project apa saja?</button>
+        <button class="sony-ai-suggestion" data-q="jelaskan project bird detection">jelaskan bird detection</button>
+        <button class="sony-ai-suggestion" data-q="tech stack Sony apa saja?">tech stack?</button>
+      </div>
+    </div>
+    <div id="sonyAIMessages"></div>
+  </div>
+
+  <footer class="sony-ai-footer">
+    <div class="sony-ai-input-wrap">
+      <textarea id="sonyAIInput" rows="1" placeholder="Tulis pesan ke SONY AI..." aria-label="Message SONY AI"></textarea>
+      <button class="sony-ai-send" id="sonyAISend" aria-label="Send message"><i class="fa-solid fa-arrow-up"></i></button>
+    </div>
+    <div class="sony-ai-hint">ENTER kirim · SHIFT + ENTER baris baru</div>
+  </footer>
+</section>
+
+
+<script>
+/* =========================================================
+   SONY AI CLIENT
+   API key is NEVER stored in this page.
+   ========================================================= */
+(() => {
+  const SONY_AI_API = "https://sony-ehjknsrla-sonysuhadi10-3460.vercel.app/api/chat";
+
+  const launcher = document.getElementById("sonyAILauncher");
+  const panel = document.getElementById("sonyAIPanel");
+  const closeBtn = document.getElementById("sonyAIClose");
+  const clearBtn = document.getElementById("sonyAIClear");
+  const body = document.getElementById("sonyAIBody");
+  const messages = document.getElementById("sonyAIMessages");
+  const input = document.getElementById("sonyAIInput");
+  const send = document.getElementById("sonyAISend");
+  const welcome = document.getElementById("sonyAIWelcome");
+
+  let sonyAIHistory = [];
+  let busy = false;
+
+  function openAI() {
+    panel.classList.add("open");
+    launcher.setAttribute("aria-expanded", "true");
+    setTimeout(() => input.focus(), 180);
+  }
+
+  function closeAI() {
+    panel.classList.remove("open");
+    launcher.setAttribute("aria-expanded", "false");
+  }
+
+  launcher.addEventListener("click", () => {
+    panel.classList.contains("open") ? closeAI() : openAI();
+  });
+  closeBtn.addEventListener("click", closeAI);
+
+  function scrollBottom() {
+    requestAnimationFrame(() => body.scrollTo({top: body.scrollHeight, behavior: "smooth"}));
+  }
+
+  function addMessage(role, text) {
+    const row = document.createElement("div");
+    row.className = "sony-ai-msg " + role;
+
+    const wrap = document.createElement("div");
+    const bubble = document.createElement("div");
+    bubble.className = "sony-ai-bubble";
+    bubble.textContent = text;
+
+    const meta = document.createElement("div");
+    meta.className = "sony-ai-meta";
+    meta.textContent = role === "user" ? "YOU" : "SONY AI";
+
+    wrap.appendChild(bubble);
+    wrap.appendChild(meta);
+    row.appendChild(wrap);
+    messages.appendChild(row);
+    scrollBottom();
+  }
+
+  function showTyping() {
+    const row = document.createElement("div");
+    row.className = "sony-ai-msg assistant";
+    row.id = "sonyAITyping";
+
+    const bubble = document.createElement("div");
+    bubble.className = "sony-ai-bubble sony-ai-typing";
+    bubble.innerHTML = "<span></span><span></span><span></span>";
+    row.appendChild(bubble);
+    messages.appendChild(row);
+    scrollBottom();
+  }
+
+  function hideTyping() {
+    document.getElementById("sonyAITyping")?.remove();
+  }
+
+  async function askSonyAI(message) {
+    const response = await fetch(SONY_AI_API, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        message,
+        history: sonyAIHistory
+      })
+    });
+
+    let data = {};
+    try { data = await response.json(); } catch (_) {}
+
+    if (!response.ok) {
+      throw new Error(data.error || "SONY AI gagal merespons.");
+    }
+
+    const reply = typeof data.reply === "string" ? data.reply.trim() : "";
+    if (!reply) throw new Error("SONY AI mengembalikan jawaban kosong.");
+
+    sonyAIHistory.push({role:"user", text:message});
+    sonyAIHistory.push({role:"assistant", text:reply});
+
+    return reply;
+  }
+
+  async function sendMessage(raw) {
+    const message = raw.trim();
+    if (!message || busy) return;
+
+    busy = true;
+    send.disabled = true;
+    input.value = "";
+    input.style.height = "auto";
+
+    welcome.style.display = "none";
+    addMessage("user", message);
+    showTyping();
+
+    try {
+      const reply = await askSonyAI(message);
+      hideTyping();
+      addMessage("assistant", reply);
+    } catch (error) {
+      hideTyping();
+      addMessage("assistant", "Maaf, SONY AI sedang mengalami gangguan. Coba lagi sebentar.");
+      console.error("SONY AI:", error);
+    } finally {
+      busy = false;
+      send.disabled = false;
+      input.focus();
+    }
+  }
+
+  send.addEventListener("click", () => sendMessage(input.value));
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage(input.value);
+    }
+  });
+
+  input.addEventListener("input", () => {
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 100) + "px";
+  });
+
+  document.querySelectorAll(".sony-ai-suggestion").forEach(btn => {
+    btn.addEventListener("click", () => sendMessage(btn.dataset.q || ""));
+  });
+
+  clearBtn.addEventListener("click", () => {
+    sonyAIHistory = [];
+    messages.innerHTML = "";
+    welcome.style.display = "";
+    input.value = "";
+    input.style.height = "auto";
+    input.focus();
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && panel.classList.contains("open")) closeAI();
+  });
+})();
 </script>
 
 </body>
